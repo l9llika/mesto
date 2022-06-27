@@ -1,0 +1,11 @@
+.place__choiсe {
+  width: 22px;
+  height: 19px;
+}
+.place__choiсe:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.place__choice_active {
+  background-image: url(../../../images/like-active.svg);
+}
