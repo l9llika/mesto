@@ -5,3 +5,8 @@
   flex-direction: column;
   justify-content: center;
 }
+@media (max-width: 520px) {
+  .profile__description {
+    align-items: center;
+  }
+}

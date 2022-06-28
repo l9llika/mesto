@@ -11,3 +11,8 @@
   cursor: pointer;
   opacity: 0.6;
 }
+@media (max-width: 720px) {
+  .profile__add-btn {
+    width: 282px;
+  }
+}

@@ -3,4 +3,18 @@
   height: 33px;
   width: 142px;
   background-image: url(/images/logo-white.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (max-width: 920px) {
+  .header__logo {
+    margin-left: 27px;
+    width: 130px;
+  }
+}
+@media (max-width: 459px) {
+  .header__logo {
+    width: 104px;
+    height: 24px;
+  }
 }
