@@ -10,3 +10,10 @@
   border-radius: 10px;
   background-color: #fff;
 }
+@media (max-width: 520px) {
+  .popup__container  {
+    padding: 25px 22px;
+    width: 282px;
+    height: 322px;
+  }
+}

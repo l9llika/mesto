@@ -2,3 +2,9 @@
   width: 10px;
   height: 10px;
 }
+@media (max-width: 520px) {
+  .profile__edit-btn-ico {
+    width: 8px;
+    height: 8px;
+  }
+}

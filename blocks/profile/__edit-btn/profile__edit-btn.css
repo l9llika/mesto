@@ -10,3 +10,10 @@
   cursor: pointer;
   opacity: 0.6;
 }
+@media (max-width: 520px) {
+  .profile__edit-btn {
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+  }
+}
