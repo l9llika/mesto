@@ -1,4 +1,4 @@
-.profile__occupation {
+.profile__about {
   margin: 0;
   padding: 0;
   font-style: normal;
@@ -8,7 +8,7 @@
   color: #fff;
 }
 @media (max-width: 520px) {
-  .profile__occupation {
+  .profile__about {
     font-size: 14px;
     line-height: 17px;
   }
