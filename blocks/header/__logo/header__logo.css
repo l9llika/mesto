@@ -2,7 +2,7 @@
   display: block;
   height: 33px;
   width: 142px;
-  background-image: url(/images/logo-white.svg);
+  background-image: url(../../../images/logo-white.svg);
   background-size: contain;
   background-repeat: no-repeat;
 }
