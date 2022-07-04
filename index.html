@@ -6,33 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Проект: Место</title>
     <link rel="stylesheet" type="text/css" href="./pages/index.css" />
-    <link rel="icon" href="favico.ico" />
+    <link rel="icon" href="./images/favico.ico" />
   </head>
   <body>
     <div class="page">
-      <div class="popup">
-        <div class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form action="submit" class="popup__form">
-            <input
-              type="text"
-              class="popup__input popup__input-name"
-              placeholder="Имя"
-            />
-            <input
-              type="text"
-              class="popup__input popup__input-job"
-              placeholder="О себе"
-            />
-            <button class="popup__save-btn">Сохранить</button>
-          </form>
-          <button class="popup__close-btn"></button>
-        </div>
-      </div>
-      <!-- ./popup -->
       <header class="header">
         <a href="#" class="header__logo"></a>
-        <div class="header__line"></div>
       </header>
       <!-- ./header -->
       <main>
@@ -46,28 +25,24 @@
             <div class="profile__description">
               <div class="profile__description-wrapper">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__edit-btn">
-                  <img
-                    src="./images/pencil-white.svg"
-                    alt="Редактировать профиль"
-                    class="profile__edit-btn-ico"
-                  />
-                </button>
+                <button
+                  class="profile__edit-btn"
+                  aria-label="edit-button"
+                  type="button"
+                ></button>
               </div>
               <p class="profile__about">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__add-btn">
-            <img
-              src="./images/plus-white-ico.svg"
-              alt="Добавить место"
-              class="profile__add-btn-ico"
-            />
-          </button>
+          <button
+            class="profile__add-btn"
+            aria-label="add-button"
+            type="button"
+          ></button>
         </section>
         <!-- ./profile -->
         <section class="elements">
-          <div class="place">
+          <article class="place">
             <img
               src="./images/monblanc.jpg"
               alt="Пик Монблан (Шамони)"
@@ -75,15 +50,15 @@
             />
             <div class="place__description">
               <h2 class="place__name">Монблан</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
-          <div class="place">
+          <article class="place">
             <img
               src="./images/alicante.jpg"
               alt="Аллея Аликанте"
@@ -91,15 +66,15 @@
             />
             <div class="place__description">
               <h2 class="place__name">Аликанте</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
-          <div class="place">
+          <article class="place">
             <img
               src="./images/aipetri.jpg"
               alt="Гора Ай-Петри"
@@ -107,15 +82,15 @@
             />
             <div class="place__description">
               <h2 class="place__name">Ай-Петри</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
-          <div class="place">
+          <article class="place">
             <img
               src="./images/berhofen.jpg"
               alt="Замок Берхофен (Швейцария)"
@@ -123,15 +98,15 @@
             />
             <div class="place__description">
               <h2 class="place__name">Берхофен замок в Швейцарии</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
-          <div class="place">
+          <article class="place">
             <img
               src="./images/goynuk.jpg"
               alt="Гойнук Анталия"
@@ -139,15 +114,15 @@
             />
             <div class="place__description">
               <h2 class="place__name">Анталия</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
-          <div class="place">
+          <article class="place">
             <img
               src="./images/altay.jpg"
               alt="Бирюзовая Катунь>"
@@ -155,13 +130,13 @@
             />
             <div class="place__description">
               <h2 class="place__name">Алтай Катунь</h2>
-              <img
-                src="./images/like-disabled.svg"
-                alt=""
-                class="place__choiсe"
-              />
+              <button
+                type="button"
+                name="like-btn"
+                class="place__choice"
+              ></button>
             </div>
-          </div>
+          </article>
           <!-- ./place -->
         </section>
         <!-- ./elements -->
@@ -171,6 +146,32 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
       <!-- ./footer -->
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form action="submit" class="popup__form" name="profile-edit">
+            <input
+              type="text"
+              class="popup__input"
+              id="popup_input-name"
+              placeholder="Имя"
+              name="inputName"
+            />
+            <input
+              type="text"
+              class="popup__input"
+              id="popup_input-job"
+              placeholder="О себе"
+              name="inputJob"
+            />
+            <button class="popup__save-btn" type="submit" name="save-btn">
+              Сохранить
+            </button>
+          </form>
+          <button class="popup__close-btn"></button>
+        </div>
+      </div>
+      <!-- ./popup -->
     </div>
     <script src="./js/main.js"></script>
   </body>

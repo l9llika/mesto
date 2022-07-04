@@ -6,10 +6,6 @@
   .profile__info {
     align-items: center;
     margin-bottom: 20px;
-  }
-}
-@media (max-width: 520px) {
-  .profile__info {
     flex-direction: column;
   }
 }

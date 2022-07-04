@@ -1,4 +1,4 @@
-// Функция поставить лайк месту
+/** funtion for like button
 const placeChoice = document.querySelectorAll('.place__choiсe');
 
 [].forEach.call(placeChoice, function (placeChoice) {
@@ -6,42 +6,40 @@ const placeChoice = document.querySelectorAll('.place__choiсe');
     placeChoice.classList.toggle('place__choice_active');
   });
 });
+*/
 
-// Функция открытия и закрытия попап окна
+//** function for close and open popupform */
 const popupElement = document.querySelector('.popup');
 const popupCloseBtn = popupElement.querySelector('.popup__close-btn');
 const profileElement = document.querySelector('.profile');
 const profileEditBtn = profileElement.querySelector('.profile__edit-btn');
+let profileName = profileElement.querySelector('.profile__name');
+let profileJob = profileElement.querySelector('.profile__about');
 
 let openPopup = function () {
   popupElement.classList.add('popup_opened');
+  //** display profile information in popup form */
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 let closePopup = function () {
   popupElement.classList.remove('popup_opened');
 }
 
-profileEditBtn.addEventListener('click', openPopup);
-popupCloseBtn.addEventListener('click', closePopup);
 
-// Редактирование информации о профиле
+//** edit information about profile */
 const formElement = document.querySelector('.popup__form');
-let nameInput = formElement.querySelector('.popup__input-name');
-let jobInput = formElement.querySelector('.popup__input-job');
-let profileName = profileElement.querySelector('.profile__name');
-let profileJob = profileElement.querySelector('.profile__about');
+const nameInput = document.getElementById('popup_input-name');
+const jobInput = document.getElementById('popup_input-job');
 
-function formSubmitHandler(evt) {
+function submitPopupForm(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   closePopup();
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
-
-// Отображение информации о профиле в попап форме
-let inputNameValue = profileElement.querySelector('.profile__name').innerHTML;
-let inputJobValue = profileElement.querySelector('.profile__about').innerHTML;
-
-nameInput.value = inputNameValue;
-jobInput.value = inputJobValue;
+formElement.addEventListener('submit', submitPopupForm);
+//** open and close popup listeners */
+profileEditBtn.addEventListener('click', openPopup);
+popupCloseBtn.addEventListener('click', closePopup);

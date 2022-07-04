@@ -1,11 +1,12 @@
-.place__choiсe {
+.place__choice {
+  padding: 0;
   width: 22px;
   height: 19px;
-}
-.place__choiсe:hover {
-  opacity: 0.5;
+  background-image: url(../../../images/like-disabled.svg);
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
-.place__choice_active {
-  background-image: url(../../../images/like-active.svg);
+.place__choice:hover {
+  opacity: 0.5;
 }

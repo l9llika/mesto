@@ -1,15 +1,30 @@
 .profile__about {
   margin: 0;
   padding: 0;
+  max-width: 450px;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media (max-width: 1024px) {
+  .profile__about {
+    max-width: 320px;
+  }
 }
 @media (max-width: 520px) {
   .profile__about {
+    max-width: 280px;
     font-size: 14px;
     line-height: 17px;
+  }
+}
+@media (max-width: 459px) {
+  .profile__about {
+    max-width: 220px;
   }
 }
