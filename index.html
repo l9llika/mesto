@@ -41,104 +41,7 @@
           ></button>
         </section>
         <!-- ./profile -->
-        <section class="elements">
-          <article class="place">
-            <img
-              src="./images/monblanc.jpg"
-              alt="Пик Монблан (Шамони)"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Монблан</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-          <article class="place">
-            <img
-              src="./images/alicante.jpg"
-              alt="Аллея Аликанте"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Аликанте</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-          <article class="place">
-            <img
-              src="./images/aipetri.jpg"
-              alt="Гора Ай-Петри"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Ай-Петри</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-          <article class="place">
-            <img
-              src="./images/berhofen.jpg"
-              alt="Замок Берхофен (Швейцария)"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Берхофен замок в Швейцарии</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-          <article class="place">
-            <img
-              src="./images/goynuk.jpg"
-              alt="Гойнук Анталия"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Анталия</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-          <article class="place">
-            <img
-              src="./images/altay.jpg"
-              alt="Бирюзовая Катунь>"
-              class="place__image"
-            />
-            <div class="place__description">
-              <h2 class="place__name">Алтай Катунь</h2>
-              <button
-                type="button"
-                name="like-btn"
-                class="place__choice"
-              ></button>
-            </div>
-          </article>
-          <!-- ./place -->
-        </section>
+        <section class="elements"></section>
         <!-- ./elements -->
       </main>
       <!-- ./main -->
@@ -146,6 +49,7 @@
         <p class="footer__copyright">© 2020 Mesto Russia</p>
       </footer>
       <!-- ./footer -->
+      <!-- edit profile popup -->
       <div class="popup">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -171,8 +75,61 @@
           <button class="popup__close-btn"></button>
         </div>
       </div>
-      <!-- ./popup -->
+      <!-- ./edit profile popup -->
+      <!-- add place popup -->
+      <div class="popup popup__add-place">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form action="submit" class="popup__form" name="profile-edit">
+            <input
+              type="text"
+              class="popup__input"
+              id="popup_input-name"
+              placeholder="Название"
+              name="inputName"
+            />
+            <input
+              type="text"
+              class="popup__input"
+              id="popup_input-job"
+              placeholder="Ссылка на картинку"
+              name="inputJob"
+            />
+            <button class="popup__save-btn" type="submit" name="save-btn">
+              Создать
+            </button>
+          </form>
+          <button class="popup__close-btn"></button>
+        </div>
+      </div>
+      <!-- ./add place popup -->
+      <!-- image popup -->
+      <div class="popup popup__image">
+        <div class="popup__container">
+          <button class="popup__close-btn"></button>
+          <img src="./images/aipetri.jpg" alt="айпетри" class="popup__image" />
+        </div>
+      </div>
+      <!-- ./add place popup -->
     </div>
+    <template class="place-template">
+      <article class="place">
+        <img src="" alt="" class="place__image" />
+        <div class="place__description">
+          <h2 class="place__name"></h2>
+          <button
+            type="button"
+            name="like-btn"
+            class="place__choice-btn"
+          ></button>
+        </div>
+        <button
+          type="button"
+          name="trash-btn"
+          class="place__trash-btn"
+        ></button>
+      </article>
+    </template>
     <script src="./js/main.js"></script>
   </body>
 </html>
