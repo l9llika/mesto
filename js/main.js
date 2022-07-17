@@ -19,7 +19,7 @@ const imagePopupDescription = imagePopup.querySelector('.image-popup__descriprio
 const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-btn');
 
 // add new place popup
-const popupAddPlace = document.querySelector('.popup__add-place');
+const popupAddPlace = document.querySelector('.popup_add-place');
 const popupAddPlaceCloseBtn = popupAddPlace.querySelector('.popup__close-btn');
 const placeAddBtn = profileElement.querySelector('.profile__add-btn');
 //** add new place form */
