@@ -31,50 +31,7 @@ const placeLinkInput = document.getElementById('popup_input-place-link');
 const placeElements = document.querySelector('.elements')
 
 // initial places from vendor
-const initialPlaces = [{
-    name: 'Монблан',
-    link: './images/monblanc.jpg'
-  },
-  {
-    name: 'Аликанте',
-    link: './images/alicante.jpg'
-  },
-  {
-    name: 'Ай-Петри',
-    link: './images/aipetri.jpg'
-  },
-  {
-    name: 'Берхофен замок в Швейцарии',
-    link: './images/berhofen.jpg'
-  },
-  {
-    name: 'Анталья',
-    link: './images/goynuk.jpg'
-  },
-  {
-    name: 'Алтай Катунь',
-    link: './images/altay.jpg'
-  },
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  }, {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  }, {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  }, {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  }, {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  }, {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import initialPlaces from "./data.js";
 
 //** function for close and open popups */
 let openPopup = function (popup) {
@@ -92,17 +49,21 @@ function submitPopupForm(evt) {
   profileJob.textContent = jobInput.value;
   closePopup(popupElement);
 }
-
+//** like place function */
+function likePlace(evt) {
+  evt.target.classList.toggle('place__choice-btn_active');
+};
 
 //** Create place function */
 const createPlace = function (place) {
   const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
+  const placeImage = placeTemplate.querySelector('.place__image');
+  placeImage.src = place.link;
+  placeImage.alt = place.name;
   placeTemplate.querySelector('.place__name').textContent = place.name;
-  placeTemplate.querySelector('.place__image').src = place.link;
-  placeTemplate.querySelector('.place__image').alt = place.name;
-  placeTemplate.querySelector('.place__choice-btn').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('place__choice-btn_active');
-  });
+
+  placeTemplate.querySelector('.place__choice-btn').addEventListener('click', likePlace);
+
   placeTemplate.querySelector('.place__trash-btn').addEventListener('click', function (evt) {
     placeTemplate.remove();
   });

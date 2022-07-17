@@ -50,7 +50,7 @@
       </footer>
       <!-- ./footer -->
       <!-- edit profile popup -->
-      <div class="popup">
+      <div class="popup popup-edit-profile">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form action="submit" class="popup__form" name="profile-edit">
@@ -108,14 +108,14 @@
       </div>
       <!-- ./add place popup -->
       <!-- image popup -->
-      <div class="image-popup">
+      <div class="popup image-popup">
         <div class="image-popup__container">
           <button class="image-popup__close-btn"></button>
           <img src="#" alt="#" class="image-popup__image" />
           <p class="image-popup__descriprion"></p>
         </div>
       </div>
-      <!-- ./add place popup -->
+      <!-- ./image popup -->
     </div>
     <template class="place-template">
       <article class="place">
@@ -137,6 +137,7 @@
         ></button>
       </article>
     </template>
-    <script src="./js/main.js"></script>
+    <script type="module" src="./js/data.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

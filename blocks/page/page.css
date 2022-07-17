@@ -1,5 +1,6 @@
 .page {
   font-family: 'Inter', sans-serif, Arial;
+  min-height: 100vh;
   background-color: #000;
   box-sizing: border-box;
 }

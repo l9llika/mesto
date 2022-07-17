@@ -1,9 +1,9 @@
 .place__image {
   height: 282px;
-  width: 282px;
+  width: 100%;
   border-radius: 10px 10px 0 0;
   background: #C4C4C4;
-  object-fit: fill;
+  object-fit: cover;
 }
 .place__image:hover {
   cursor: pointer;
