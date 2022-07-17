@@ -1,46 +1,34 @@
-//  funtion for like button
-const placeChoice = document.querySelectorAll('.place__choice');
+//** Popups in project */
 
-
-
-//** function for close and open popupform */
+//** Edit profile popup window */
 const popupElement = document.querySelector('.popup');
 const popupCloseBtn = popupElement.querySelector('.popup__close-btn');
 const profileElement = document.querySelector('.profile');
 const profileEditBtn = profileElement.querySelector('.profile__edit-btn');
 let profileName = profileElement.querySelector('.profile__name');
 let profileJob = profileElement.querySelector('.profile__about');
-
-let openPopup = function () {
-  popupElement.classList.add('popup_opened');
-  //** display profile information in popup form */
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-}
-let closePopup = function () {
-  popupElement.classList.remove('popup_opened');
-}
-
-
-//** edit information about profile */
+//** edit profile form */
 const formElement = document.querySelector('.popup__form');
 const nameInput = document.getElementById('popup_input-name');
 const jobInput = document.getElementById('popup_input-job');
 
-function submitPopupForm(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  closePopup();
-}
+//** Image popup */
+const imagePopup = document.querySelector('.image-popup');
+const imagePopupLink = imagePopup.querySelector('.image-popup__image');
+const imagePopupDescription = imagePopup.querySelector('.image-popup__descriprion');
+const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-btn');
 
-formElement.addEventListener('submit', submitPopupForm);
+// add new place popup
+const popupAddPlace = document.querySelector('.popup__add-place');
+const popupAddPlaceCloseBtn = popupAddPlace.querySelector('.popup__close-btn');
+const placeAddBtn = profileElement.querySelector('.profile__add-btn');
+//** add new place form */
+const addPlaceFormElement = document.querySelector('.popup__add-form');
+const placeInput = document.getElementById('popup_input-place');
+const placeLinkInput = document.getElementById('popup_input-place-link');
 
-
-
-//** open and close popup listeners */
-profileEditBtn.addEventListener('click', openPopup);
-popupCloseBtn.addEventListener('click', closePopup);
+// reneder initial places in html
+const placeElements = document.querySelector('.elements')
 
 // initial places from vendor
 const initialPlaces = [{
@@ -87,24 +75,27 @@ const initialPlaces = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-// reneder initial places in html
-const placeElements = document.querySelector('.elements')
-const imagePopup = document.querySelector('.image-popup');
-const imagePopupLink = imagePopup.querySelector('.image-popup__image');
-const imagePopupDescription = imagePopup.querySelector('.image-popup__descriprion');
-const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-btn');
 
-// open and close image popup
-let openImagePopup = function () {
-  imagePopup.classList.add('image-popup_opened');
+//** function for close and open popups */
+let openPopup = function (popup) {
+  popup.classList.add('popup_opened');
+};
+let closePopup = function (popup) {
+  popup.classList.remove('popup_opened');
+};
+
+
+//** Edit information about profile */
+function submitPopupForm(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  closePopup(popupElement);
 }
-let closeImagePopup = function () {
-  imagePopup.classList.remove('image-popup_opened');
-}
 
-imagePopupCloseBtn.addEventListener('click', closeImagePopup);
 
-initialPlaces.forEach(function (place) {
+//** Create place function */
+const createPlace = function (place) {
   const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
   placeTemplate.querySelector('.place__name').textContent = place.name;
   placeTemplate.querySelector('.place__image').src = place.link;
@@ -119,58 +110,60 @@ initialPlaces.forEach(function (place) {
     imagePopupLink.src = place.link;
     imagePopupLink.alt = place.name;
     imagePopupDescription.textContent = place.name;
-    openImagePopup();
+    openPopup(imagePopup);
   });
+  return placeTemplate;
+};
 
-  placeElements.appendChild(placeTemplate);
+//** create places function */
+const renderPlaces = function (place) {
+  placeElements.appendChild(place);
+};
+
+//** use initial places and render */
+initialPlaces.forEach(function (place) {
+  const placeItem = createPlace(place);
+  renderPlaces(placeItem);
 });
 
-
-// open new places popup
-const popupAddPlace = document.querySelector('.popup__add-place');
-const popupAddPlaceCloseBtn = popupAddPlace.querySelector('.popup__close-btn');
-const placeAddBtn = profileElement.querySelector('.profile__add-btn');
-
-let openAddPopup = function () {
-  popupAddPlace.classList.add('popup_opened');
-}
-let closeAddPlacePopup = function () {
-  popupAddPlace.classList.remove('popup_opened');
-}
-
-placeAddBtn.addEventListener('click', openAddPopup);
-popupAddPlaceCloseBtn.addEventListener('click', closeAddPlacePopup);
-
-// add new place card
-const addPlaceFormElement = document.querySelector('.popup__add-form');
-const placeInput = document.getElementById('popup_input-place');
-const placeLinkInput = document.getElementById('popup_input-place-link');
-
+//** Add new place from place add form*/
 function submitAddPlacePopupForm(evt) {
   evt.preventDefault();
   const newPlace = {
     name: placeInput.value,
     link: placeLinkInput.value,
   };
-  const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
-  placeTemplate.querySelector('.place__name').textContent = newPlace.name;
-  placeTemplate.querySelector('.place__image').src = newPlace.link;
-  placeTemplate.querySelector('.place__image').alt = newPlace.name;
-  placeElements.prepend(placeTemplate);
-  closeAddPlacePopup();
-};
+  const placeItem = createPlace(newPlace);
+  renderPlaces(placeItem);
+  closePopup(popupAddPlace);
+}
+//** Event listeners */
 
-// function submitAddPlacePopupForm(evt) {
-//   evt.preventDefault();
-//   const newPlace = [{
-//     name: placeInput.value,
-//     link: placeLinkInput.value,
-//   }];
-//   initialPlaces.push(newPlace);
-//   closeAddPlacePopup();
-//   console.log(initialPlaces);
-// };
+//** open and close edit popup listeners */
+profileEditBtn.addEventListener('click', function () {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  openPopup(popupElement);
+});
+popupCloseBtn.addEventListener('click', function () {
+  closePopup(popupElement);
+});
 
-// function createNewPlace ()
+//** Submit edit info event listener */
+formElement.addEventListener('submit', submitPopupForm);
 
+//** Сlose Image popup */
+imagePopupCloseBtn.addEventListener('click', function () {
+  closePopup(imagePopup);
+});
+
+//** open add new places popup */
+placeAddBtn.addEventListener('click', function () {
+  openPopup(popupAddPlace);
+});
+popupAddPlaceCloseBtn.addEventListener('click', function () {
+  closePopup(popupAddPlace);
+});
+
+//** Submit add form listener  */
 addPlaceFormElement.addEventListener('submit', submitAddPlacePopupForm);
