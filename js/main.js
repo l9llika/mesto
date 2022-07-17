@@ -117,7 +117,7 @@ const createPlace = function (place) {
 
 //** create places function */
 const renderPlaces = function (place) {
-  placeElements.appendChild(place);
+  placeElements.prepend(place);
 };
 
 //** use initial places and render */
