@@ -11,7 +11,7 @@
   background-color: transparent;
   border: none;
 }
-.popup__zoom-close-btn {
+.popup__zoom-close-btn:hover {
   opacity: 0.6;
   cursor: pointer;
 }
