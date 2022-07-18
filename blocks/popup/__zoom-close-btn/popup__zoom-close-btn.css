@@ -1,4 +1,4 @@
-.image-popup__close-btn {
+.popup__zoom-close-btn {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -11,12 +11,12 @@
   background-color: transparent;
   border: none;
 }
-.image-popup__close-btn:hover {
+.popup__zoom-close-btn {
   opacity: 0.6;
   cursor: pointer;
 }
 @media (max-width: 520px) {
-  .image-popup__close-btn  {
+  .popup__zoom-close-btn  {
     top: -36px;
     right: 0px;
     width: 20px;

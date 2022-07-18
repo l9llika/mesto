@@ -13,11 +13,10 @@ const nameInput = document.getElementById('popup_input-name');
 const jobInput = document.getElementById('popup_input-job');
 
 //** Image popup */
-const imagePopup = document.querySelector('.image-popup');
-const imagePopupLink = imagePopup.querySelector('.image-popup__image');
-const imagePopupDescription = imagePopup.querySelector('.image-popup__descriprion');
-const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-btn');
-
+const imagePopup = document.querySelector('.popup_zoom');
+const imagePopupLink = imagePopup.querySelector('.popup__zoom-image');
+const imagePopupDescription = imagePopup.querySelector('.popup__zoom-descriprtion');
+const imagePopupCloseBtn = imagePopup.querySelector('.popup__zoom-close-btn');
 // add new place popup
 const popupAddPlace = document.querySelector('.popup_add-place');
 const popupAddPlaceCloseBtn = popupAddPlace.querySelector('.popup__close-btn');
