@@ -53,8 +53,8 @@ function setSubmitButtonState(button, config, isValid) {
 
 //** clear errors */
 function clearFormErrors(popup) {
-    const inputErrors = Array.from(popup.querySelectorAll(".popup__error"));
-    const inputs = Array.from(popup.querySelectorAll(".popup__input"));
+    const inputErrors = Array.from(popup.querySelectorAll(allSelectorsClass.popupError));
+    const inputs = Array.from(popup.querySelectorAll(allSelectorsClass.input));
     inputErrors.forEach((error) => {
       error.textContent = "";
     });
