@@ -65,7 +65,7 @@
                 minlength="2"
                 required
               />
-              <span class="popup__error" id="name-error"></span>
+              <span class="popup__error" id="inputName-error"></span>
             </label>
             <label class="popup__field"><input
               type="text"
@@ -77,7 +77,7 @@
               minlength="2"
               required
             />
-            <span class="popup__error" id="job-error"></span>
+            <span class="popup__error" id="inputJob-error"></span>
           </label>            
             <button class="popup__save-btn popup__save-btn_disabled" type="submit" name="save-btn" disabled>
               Сохранить
@@ -96,6 +96,7 @@
             class="popup__form popup__add-form"
             name="add-place"
           >
+          <label class="popup__field">
             <input
               type="text"
               class="popup__input"
@@ -103,14 +104,19 @@
               placeholder="Название"
               name="inputPlace"
             />
+            <span class="popup__error" id="inputPlace-error"></span>
+            </label>
+            <label class="popup__field">
             <input
-              type="text"
+              type="url"
               class="popup__input"
               id="popup_input-place-link"
               placeholder="Ссылка на картинку"
               name="inputPlaceLink"
             />
-            <button class="popup__save-btn" type="submit" name="create-btn">
+            <span class="popup__error" id="inputPlaceLink-error"></span>
+            </label>
+            <button class="popup__save-btn popup__save-btn_disabled" type="submit" name="create-btn">
               Создать
             </button>
           </form>

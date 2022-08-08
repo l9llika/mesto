@@ -9,7 +9,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1;
 }
 .place__trash-btn:hover {
   opacity: 0.5;

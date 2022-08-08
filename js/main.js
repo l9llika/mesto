@@ -34,14 +34,33 @@ const placeLinkInput = document.getElementById('popup_input-place-link');
 // reneder initial places in html
 const placeElements = document.querySelector('.elements')
 
-
+//** close popup by escape */
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
+//** close popup by overlay */
+// function closePopupByOverlay(evt) {
+//   if (
+//     evt.target === evt.currentTarget ||
+//     evt.target.classList.contains("popup__save-btn")
+//   ) {
+//     closePopup(evt.currentTarget);
+//   }
+// }
 
 //** function for close and open popups */
 let openPopup = function (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener("keyup", closePopupByEsc);
+  // popup.addEventListener("mousedown", closePopupByOverlay);
 };
 let closePopup = function (popup) {
   popup.classList.remove('popup_opened');
+  document.addEventListener("keyup", closePopupByEsc);
+  // popup.addEventListener("mousedown", closePopupByOverlay);
 };
 
 
@@ -113,15 +132,7 @@ profileEditBtn.addEventListener('click', function () {
 popupCloseBtn.addEventListener('click', function () {
   closePopup(popupElement);
 });
-//** close popup by overlay */
-function closePopupByOverlay(evt) {
-  if (
-    evt.target === evt.currentTarget ||
-    evt.target.classList.contains("popup__close-button")
-  ) {
-    closePopup(evt.currentTarget);
-  }
-}
+
 //** Submit edit info event listener */
 formElement.addEventListener('submit', submitPopupForm);
 
@@ -132,7 +143,7 @@ imagePopupCloseBtn.addEventListener('click', function () {
 
 //** open add new places popup */
 placeAddBtn.addEventListener('click', function () {
-  popupPlaceForm.reset();
+  formElement.reset();
   clearFormErrors(popupAddPlace);
   openPopup(popupAddPlace);
 });
