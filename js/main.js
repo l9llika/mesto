@@ -42,25 +42,25 @@ function closePopupByEsc(evt) {
   }
 }
 //** close popup by overlay */
-// function closePopupByOverlay(evt) {
-//   if (
-//     evt.target === evt.currentTarget ||
-//     evt.target.classList.contains("popup__save-btn")
-//   ) {
-//     closePopup(evt.currentTarget);
-//   }
-// }
+function closePopupByOverlay(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("popup__close-btn")
+  ) {
+    closePopup(evt.currentTarget);
+  }
+}
 
 //** function for close and open popups */
 let openPopup = function (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener("keyup", closePopupByEsc);
-  // popup.addEventListener("mousedown", closePopupByOverlay);
+  popup.addEventListener("mousedown", closePopupByOverlay);
 };
 let closePopup = function (popup) {
   popup.classList.remove('popup_opened');
   document.addEventListener("keyup", closePopupByEsc);
-  // popup.addEventListener("mousedown", closePopupByOverlay);
+  popup.addEventListener("mousedown", closePopupByOverlay);
 };
 
 
