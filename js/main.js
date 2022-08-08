@@ -1,3 +1,8 @@
+//** export validate functions */
+import clearFormErrors from "./validate.js";
+//** initial places from vendor */
+import initialPlaces from "./data.js";
+
 //** Popups in project */
 
 //** Edit profile popup window */
@@ -29,8 +34,7 @@ const placeLinkInput = document.getElementById('popup_input-place-link');
 // reneder initial places in html
 const placeElements = document.querySelector('.elements')
 
-// initial places from vendor
-import initialPlaces from "./data.js";
+
 
 //** function for close and open popups */
 let openPopup = function (popup) {
@@ -103,12 +107,21 @@ function submitAddPlacePopupForm(evt) {
 profileEditBtn.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  clearFormErrors(popupElement);
   openPopup(popupElement);
 });
 popupCloseBtn.addEventListener('click', function () {
   closePopup(popupElement);
 });
-
+//** close popup by overlay */
+function closePopupByOverlay(evt) {
+  if (
+    evt.target === evt.currentTarget ||
+    evt.target.classList.contains("popup__close-button")
+  ) {
+    closePopup(evt.currentTarget);
+  }
+}
 //** Submit edit info event listener */
 formElement.addEventListener('submit', submitPopupForm);
 
@@ -119,6 +132,8 @@ imagePopupCloseBtn.addEventListener('click', function () {
 
 //** open add new places popup */
 placeAddBtn.addEventListener('click', function () {
+  popupPlaceForm.reset();
+  clearFormErrors(popupAddPlace);
   openPopup(popupAddPlace);
 });
 popupAddPlaceCloseBtn.addEventListener('click', function () {

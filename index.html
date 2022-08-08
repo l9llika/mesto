@@ -53,22 +53,33 @@
       <div class="popup popup-edit-profile">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form action="submit" class="popup__form" name="profile-edit">
-            <input
+          <form action="submit" class="popup__form" name="profile-edit" novalidate>
+            <label class="popup__field">
+              <input
+                type="text"
+                class="popup__input popup__input_type_error"
+                id="popup_input-name"
+                placeholder="Имя"
+                name="inputName"
+                maxlength="40"
+                minlength="2"
+                required
+              />
+              <span class="popup__error" id="name-error"></span>
+            </label>
+            <label class="popup__field"><input
               type="text"
-              class="popup__input"
-              id="popup_input-name"
-              placeholder="Имя"
-              name="inputName"
-            />
-            <input
-              type="text"
-              class="popup__input"
+              class="popup__input popup__input_type_error"
               id="popup_input-job"
               placeholder="О себе"
               name="inputJob"
+              maxlength="200"
+              minlength="2"
+              required
             />
-            <button class="popup__save-btn" type="submit" name="save-btn">
+            <span class="popup__error" id="job-error"></span>
+          </label>            
+            <button class="popup__save-btn popup__save-btn_disabled" type="submit" name="save-btn" disabled>
               Сохранить
             </button>
           </form>
@@ -138,6 +149,7 @@
       </article>
     </template>
     <script type="module" src="./js/data.js"></script>
+    <script type="module" src="./js/validate.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

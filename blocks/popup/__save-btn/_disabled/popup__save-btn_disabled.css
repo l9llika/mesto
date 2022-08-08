@@ -1,0 +1,26 @@
+.popup__save-btn_disabled {
+    border: 1px solid rgb(0%, 0%, 0%, 0.2);
+    background-color: white;
+    color: rgb(0%, 0%, 0%, 0.2);
+    margin-top: 48px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    padding: 14px 0 18px 0;
+    border-radius: 2px;
+  }
+  
+  .popup__save-btn_disabled:hover {
+    opacity: 1;
+    cursor: not-allowed;
+  }
+  
+  @media screen and (max-width: 450px) {
+    .popup__save-btn_disabled {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      padding: 14px 0 14px 0;
+    }
+  }

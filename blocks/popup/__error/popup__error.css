@@ -1,0 +1,15 @@
+.popup__error {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: red;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .popup__error {
+      margin: 0 22px 10px 22px;
+    }
+  }
