@@ -6,8 +6,8 @@ import initialPlaces from "./data.js";
 //** Popups in project */
 
 //** Edit profile popup window */
-const editPopup = document.querySelector('.popup');
-const closeEditFormButton = editPopup.querySelector('.popup__close-btn');
+const popupEdit = document.querySelector('.popup');
+const buttonCloseEditForm = popupEdit.querySelector('.popup__close-btn');
 const profileElement = document.querySelector('.profile');
 const profileEditBtn = profileElement.querySelector('.profile__edit-btn');
 let profileName = profileElement.querySelector('.profile__name');
@@ -30,7 +30,7 @@ const placeAddBtn = profileElement.querySelector('.profile__add-btn');
 const placeAddFormElement = document.querySelector('.popup__add-form');
 const placeInput = document.getElementById('popup_input-place');
 const placeLinkInput = document.getElementById('popup_input-place-link');
-
+const placeSubmitBtn = placeAddFormElement.querySelector('.popup__save-btn');
 // reneder initial places in html
 const placeElements = document.querySelector('.elements')
 
@@ -60,7 +60,7 @@ let openPopup = function (popup) {
 let closePopup = function (popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener("keyup", closePopupByEsc);
-  popup.addEventListener("mousedown", closePopupByOverlay);
+  popup.removeEventListener("mousedown", closePopupByOverlay);
 };
 
 
@@ -69,7 +69,7 @@ function submitPopupForm(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup(editPopup);
+  closePopup(popupEdit);
 }
 //** like place function */
 function likePlace(evt) {
@@ -123,6 +123,8 @@ function submitAddPlacePopupForm(evt) {
   const placeItem = createPlace(newPlace);
   renderPlaces(placeItem);
   closePopup(popupAddPlace);
+  placeSubmitBtn.setAttribute('disabled', true);
+  placeSubmitBtn.classList.add('popup__save-btn_disabled')
 }
 //** Event listeners */
 
@@ -130,11 +132,11 @@ function submitAddPlacePopupForm(evt) {
 profileEditBtn.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  clearFormErrors(editPopup);
-  openPopup(editPopup);
+  clearFormErrors(popupEdit);
+  openPopup(popupEdit);
 });
-closeEditFormButton.addEventListener('click', function () {
-  closePopup(editPopup);
+buttonCloseEditForm.addEventListener('click', function () {
+  closePopup(popupEdit);
 });
 
 //** Submit edit info event listener */
@@ -147,10 +149,11 @@ imagePopupCloseBtn.addEventListener('click', function () {
 
 //** open add new places popup */
 placeAddBtn.addEventListener('click', function () {
-  formElement.reset();
+  placeAddFormElement.reset();
   clearFormErrors(popupAddPlace);
   openPopup(popupAddPlace);
 });
+
 popupAddPlaceCloseBtn.addEventListener('click', function () {
   closePopup(popupAddPlace);
 });

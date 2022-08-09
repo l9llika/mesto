@@ -59,7 +59,7 @@ function clearFormErrors(popup) {
       error.textContent = "";
     });
     inputs.forEach((input) => {
-      input.classList.remove("popup__input_type_error");
+      input.classList.remove(allSelectorsClass.inputTypeError);
     });
   }
 
