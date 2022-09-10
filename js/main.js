@@ -76,6 +76,10 @@ function likePlace(evt) {
   evt.target.classList.toggle('place__choice-btn_active');
 };
 
+
+
+
+// ФУНКЦИЯ ДЛЯ СОЗДАНИЯ КАРТОЧКИ 
 //** Create place function */
 const createPlace = function (place) {
   const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
@@ -98,15 +102,13 @@ const createPlace = function (place) {
   return placeTemplate;
 };
 
-
-
-
-
+// ВСТАВКА КАРТОЧКИ В НАЧАЛО СПИСКА
 //** create places function */
 const renderPlaces = function (place) {
   placeElements.prepend(place);
 };
 
+//ЦИКЛ ОБРАБОТКИ ВСЕХ МЕСТ И ВСТАВКА
 //** use initial places and render */
 initialPlaces.forEach(function (place) {
   const placeItem = createPlace(place);
@@ -126,6 +128,11 @@ function submitAddPlacePopupForm(evt) {
   placeSubmitBtn.setAttribute('disabled', true);
   placeSubmitBtn.classList.add('popup__save-btn_disabled')
 }
+
+
+
+
+
 //** Event listeners */
 
 //** open and close edit popup listeners */
