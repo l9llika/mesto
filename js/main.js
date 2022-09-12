@@ -2,7 +2,8 @@
 import clearFormErrors from "./validate.js";
 //** initial places from vendor */
 import initialPlaces from "./data.js";
-
+//** Card */
+import Card from "./Card.js";
 //** Popups in project */
 
 //** Edit profile popup window */
@@ -32,7 +33,7 @@ const placeInput = document.getElementById('popup_input-place');
 const placeLinkInput = document.getElementById('popup_input-place-link');
 const placeSubmitBtn = placeAddFormElement.querySelector('.popup__save-btn');
 // reneder initial places in html
-const placeElements = document.querySelector('.elements')
+const placeElements = document.querySelector('.elements');
 
 //** close popup by escape */
 function closePopupByEsc(evt) {
@@ -71,49 +72,73 @@ function submitPopupForm(evt) {
   profileJob.textContent = jobInput.value;
   closePopup(popupEdit);
 }
-//** like place function */
-function likePlace(evt) {
-  evt.target.classList.toggle('place__choice-btn_active');
-};
 
 
 
 
 // ФУНКЦИЯ ДЛЯ СОЗДАНИЯ КАРТОЧКИ 
+
 //** Create place function */
-const createPlace = function (place) {
-  const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
-  const placeImage = placeTemplate.querySelector('.place__image');
-  placeImage.src = place.link;
-  placeImage.alt = place.name;
-  placeTemplate.querySelector('.place__name').textContent = place.name;
+// const createPlace = function (place) {
+//   // const placeTemplate = document.querySelector('.place-template').content.querySelector('.place').cloneNode(true);
+//   const placeImage = placeTemplate.querySelector('.place__image');
+//   placeImage.src = place.link;
+//   placeImage.alt = place.name;
+//   placeTemplate.querySelector('.place__name').textContent = place.name;
 
-  placeTemplate.querySelector('.place__choice-btn').addEventListener('click', likePlace);
+//   placeTemplate.querySelector('.place__choice-btn').addEventListener('click', likePlace);
 
-  placeTemplate.querySelector('.place__trash-btn').addEventListener('click', function (evt) {
-    placeTemplate.remove();
-  });
-  placeTemplate.querySelector('.place__image-btn').addEventListener('click', function (evt) {
-    imagePopupLink.src = place.link;
-    imagePopupLink.alt = place.name;
-    imagePopupDescription.textContent = place.name;
-    openPopup(imagePopup);
-  });
-  return placeTemplate;
-};
+//   placeTemplate.querySelector('.place__trash-btn').addEventListener('click', function (evt) {
+//     placeTemplate.remove();
+//   });
+//   placeTemplate.querySelector('.place__image-btn').addEventListener('click', function (evt) {
+//     imagePopupLink.src = place.link;
+//     imagePopupLink.alt = place.name;
+//     imagePopupDescription.textContent = place.name;
+//     openPopup(imagePopup);
+//   });
+//   return placeTemplate;
+// };
+// ФУНКЦИЯ ОТКРЫТИЯ ПОЛНОГО РАЗМЕРА КАРТИНКИ
+export default function handleCardClick(data) {
+  imagePopupLink.src = data.link;
+  imagePopupLink.alt = data.name;
+  imagePopupDescription.textContent = data.name;
+  openPopup(imagePopup);
+}
 
+// СОЗДАНИЕ НОВОЙ КАРТОЧКИ
+function createPlace(data) {
+  const elementItem = new Card(data, '.place-template', handleCardClick);
+  const newCard = elementItem.generateCard();
+  return newCard;
+}
+//ЦИКЛ ОБРАБОТКИ ВСЕХ МЕСТ И ВСТАВКА
+initialPlaces.forEach((item) => {
+  const placeItem = createPlace(item);
+  placeElements.prepend(placeItem);
+});
+
+
+
+//   placeTemplate.querySelector('.place__image-btn').addEventListener('click', function (evt) {
+//     openPopup(imagePopup);
+//   });
 // ВСТАВКА КАРТОЧКИ В НАЧАЛО СПИСКА
 //** create places function */
 const renderPlaces = function (place) {
   placeElements.prepend(place);
 };
 
-//ЦИКЛ ОБРАБОТКИ ВСЕХ МЕСТ И ВСТАВКА
 //** use initial places and render */
-initialPlaces.forEach(function (place) {
-  const placeItem = createPlace(place);
-  renderPlaces(placeItem);
-});
+// initialPlaces.forEach((place) => {
+//   const card = new Card(place, '.elements-item', handleCardClick);
+//   const placeElement = card.generateCard();
+//   document.querySelector('.elements').append(placeElement);
+// });
+
+
+
 
 //** Add new place from place add form*/
 function submitAddPlacePopupForm(evt) {
