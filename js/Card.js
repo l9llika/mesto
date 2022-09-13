@@ -24,7 +24,6 @@ class Card {
         this._element.remove();
         this._element = null;
     }
-
     //** Слушатели событий  */
     _setListeners() {
         this._element
@@ -54,33 +53,8 @@ class Card {
         this._image = this._element.querySelector('.place__image');
         this._image.src = this._link;
         this._image.alt = this._name;
-
         return this._element;
     }
 }
 
 export default Card;
-
-// Создайте класс Card, который создаёт карточку с текстом и ссылкой на изображение:
-// принимает в конструктор её данные и селектор её template-элемента;
-// содержит приватные методы, которые работают с разметкой, устанавливают слушателей событий;
-// содержит приватные методы для каждого обработчика;
-// содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
-
-
-// СОЗДАНИЕ НОВОЙ КАРТОЧКИ
-// function createCard(cardName, cardLink) {
-//     const listItem = new Card(cardName, cardLink, ".template");
-//     const newCard = listItem.generate();
-//     return newCard
-// }
-
-// const createCard = (data) => {
-//     const card = new Card(data, cardSelector);
-//     return card.getView();
-// }
-
-// const renderCard = (data, wrap) => {
-//     const card = createCard(data);
-//     wrap.prepend(card.getView());
-// };
