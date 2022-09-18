@@ -6,6 +6,12 @@ import initialPlaces from "./data.js";
 import Card from "./Card.js";
 //** FormValidator */
 import FormValidator from "./FormValidator.js";
+//** Section */
+import Section from "./Section.js";
+//** PopUp */
+import Popup from "./Popup.js";
+//** PopUp with form */
+//** PopUp with image */
 
 
 //** Popups in project */
