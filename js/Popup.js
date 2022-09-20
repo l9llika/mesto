@@ -1,30 +1,40 @@
+import {
+  ESCAPE_KEY
+} from "../utils/constants.js";
+
 class Popup {
-  constructor(popup) {
-    this._popup = document.querySelector(popup);
-    this._closeButton = this._popup.querySelector(".popup__close-button");
+  constructor(popupSelector) {
+    this._popup = document.querySelector(popupSelector);
+    this._buttonClose = this._popup.querySelector(".popup__close-btn");
+    this._handleEsc = this._handleEscClose.bind(this);
   }
 
   open() {
-    console.log(document.querySelector(".popup_profile"));
-    this._popup.classList.add("popup_active");
-    body.classList.add("page_overflow");
+    this._popup.classList.add("popup_opened");
+    document.addEventListener("keyup", this._handleEsc);
   }
 
   close() {
-    this._popup.classList.remove("popup_active");
-    body.classList.remove("page_overflow");
+    this._popup.classList.remove("popup_opened");
+    document.removeEventListener("keyup", this._handleEsc);
   }
 
-  _handleEscClose(evt) {
-    if (evt.key === "Escape") {
+  _handleEscClose(event) {
+    if (event.key === ESCAPE_KEY) {
       this.close();
     }
   }
-
   setEventListeners() {
-    this._closeButton.addEventListener("click", () => {
-      this.close();
+    this._popup.addEventListener("mousedown", (event) => {
+      this._handleCloseByOverlay(event);
     });
+    this._buttonClose.addEventListener("click", () => this.close());
+  }
+  _handleCloseByOverlay(event) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    this.close();
   }
 }
 

@@ -7,8 +7,8 @@ class Section {
     this._items = items;
     this._renderer = renderer;
   }
-  generateCards() {
-    this._items.forEach((item) => this._renderer(item));
+  generateCards(items) {
+    items.forEach((item) => this._renderer(item));
   }
   addItem(element) {
     this._container.append(element);
