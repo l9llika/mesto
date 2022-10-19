@@ -1,13 +1,13 @@
+//** import css file */
+// import '../pages/index.css';
 //** Card */
 import Card from "./Card.js";
 //** FormValidator */
 import FormValidator from "./FormValidator.js";
-//** UserInfo */
-import UserInfo from "./UserInfo.js";
-//** PopUp */
-import Popup from "./Popup.js";
 //** Section */
 import Section from "./Section.js";
+//** UserInfo */
+import UserInfo from "./UserInfo.js";
 //** PopUp with form */
 import PopupWithForm from "./PopupWithForm.js";
 //** PopUp with image */
@@ -16,88 +16,92 @@ import PopupWithImage from "./PopupWithImage.js";
 
 import {
   formAllSelectors,
-  classCreationSelectors,
-  initialPlaces
+  initialPlaces,
+  popupFormAdd,
+  popupFormEdit,
+  nameInput,
+  jobInput,
+  buttonEdit,
+  buttonAdd
 } from "./constants.js";
 
 
-import {
-  popupForm,
-  popupProfileOpenButton,
-  profileSubmitButton,
-  placePopupOpenButton,
-  popupPlaceForm,
-  buttonPlaceSubmit
-} from "./domElements.js";
 
 
-// СОЗДАНИЕ НОВОЙ КАРТОЧКИ
-const createCard = (item) => {
-  const card = new Card(item, selectorClasses.template, (obj) =>
-    popupImage.open(obj)
-  );
-  const cardElement = card.generateCard();
-  section.addItem(cardElement);
-};
+//** СОЗДАНИЕ НОВОЙ КАРТОЧКИ */ 
+function createCard(data) {
+  const newCard = new Card({
+      name: data.name,
+      link: data.link
+    },
+    '.template',
+    imagePopup.open.bind(imagePopup));
+  return newCard.generateCard();
+}
 
 
 //НОВЫЙ КЛАСС СЕКЦИИ МЕСТ И ВСТАВКА В РАЗМЕТКУ
-const section = new Section({
+const cardSection = new Section({
     items: initialPlaces,
-    renderer: createCard,
+    renderer: (item) => cardSection.addItem(createCard(item))
   },
-  classCreationSelectors.cardList
-);
-// НОВЫЙ КЛАСС ОТОБРАЖЕНИЯ ПОЛЬЗОВАТЕЛЯ НА СТРАНИЦЕ
-const userInfo = new UserInfo({
-  name: classCreationSelectors.userName,
-  job: classCreationSelectors.userJob,
-});
-
-
-// // НОВЫЙ КЛАСС ФОРМЫ
-const popupProfile = new PopupWithForm(
-  classCreationSelectors.profilePopup,
-  (v) => userInfo.setUserInfo(v)
-);
-const popupWithFormCards = new PopupWithForm(
-  classCreationSelectors.placePopup,
-  createCard
+  ".cards"
 );
 
 
+const handleProfileFormSubmit = (formValues) => {
+  userInfo.setUserInfo(formValues.nameInput, formValues.jobInput);
+  popupEdit.close();
+}
+
+const handleCardFormSubmit = (formValues) => {
+  cardSection.addItem(createCard(formValues));
+  popupAdd.close();
+}
 
 
+const imagePopup = new PopupWithImage(".popup_zoom");
+const popupEdit = new PopupWithForm(".popup-edit-profile", handleProfileFormSubmit);
+const popupAdd = new PopupWithForm(".popup_add-place", handleCardFormSubmit);
+const formEditValidator = new FormValidator(formAllSelectors, popupFormEdit);
+const formAddValidator = new FormValidator(formAllSelectors, popupFormAdd);
+const userInfo = new UserInfo(".profile__name", ".profile__about");
 
-const popupImage = new PopupWithImage(classCreationSelectors.imagePopup);
+function handleEditProfileButtonClick() {
+  popupEdit.open();
+  const userInfoObj = userInfo.getUserInfo();
+  nameInput.value = userInfoObj.name;
+  jobInput.value = userInfoObj.info;
+  formEditValidator.resetValidation();
+}
+
+function handleAddCardButtonClick() {
+  popupAdd.open();
+  formAddValidator.resetValidation();
+}
+
+buttonEdit.addEventListener('click', handleEditProfileButtonClick);
+buttonAdd.addEventListener('click', handleAddCardButtonClick);
+
+imagePopup.setEventListeners();
+popupEdit.setEventListeners();
+popupAdd.setEventListeners();
+
+formEditValidator.enableValidation();
+formAddValidator.enableValidation();
 
 
-
-
-
-popupImage.setEventListeners();
-popupProfile.setEventListeners();
-popupWithFormCards.setEventListeners();
-section.generateCards();
+// popupImage.setEventListeners();
+// popupProfile.setEventListeners();
+// popupWithFormCards.setEventListeners();
+// section.generateCards();
 
 //** ВАЛИДАЦИЯ ФОРМ */
-const formProfileCheckValid = new FormValidator(formAllSelectors, formElement);
-formProfileCheckValid.enableValidation();
-
-const formPlaceCheckValid = new FormValidator(formAllSelectors, popupAddPlace);
-formPlaceCheckValid.enableValidation();
 
 //** Event listeners */
 
 //** open and close edit popup listeners */
-popupProfileOpenButton.addEventListener("click", () => {
-  formProfileCheckValid.clearFormErrors();
-  formProfileCheckValid.handleInitialButtonState(profileSubmitButton);
-  popupProfile.setInitialValues(userInfo.getUserInfo());
-  popupProfile.open();
-});
-placePopupOpenButton.addEventListener("click", () => {
-  formPlaceCheckValid.clearFormErrors();
-  formProfileCheckValid.handleInitialButtonState(buttonPlaceSubmit);
-  popupWithFormCards.open();
-});
+
+
+
+cardSection.generateCards();

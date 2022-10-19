@@ -1,16 +1,16 @@
-export const classCreationSelectors = {
-  userName: ".profile__name",
-  userJob: ".profile__profession",
-  profilePopup: ".profile__about",
-  placePopup: ".popup_add-place",
-  imagePopup: ".popup_zoom",
-  cardList: ".place",
-};
+export const popupFormAdd = document.querySelector('.popup__add-form');
+export const popupFormEdit = document.querySelector('.popup-edit-profile');
+export const nameInput = popupFormEdit.querySelector('popup_input-name');
+export const jobInput = popupFormEdit.querySelector('popup_input-job');
+export const buttonEdit = document.querySelector('.profile__edit-btn');
+export const buttonAdd = document.querySelector('.profile__add-btn');
+
+
 
 export const formAllSelectors = {
   form: ".popup__form",
-  button: ".popup__save-btn",
   input: ".popup__input",
+  button: ".popup__save-btn",
   inputTypeError: "popup__input_type_error",
   buttonDisabled: "popup__save-btn_disabled",
   popupError: ".popup__error",
