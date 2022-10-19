@@ -13,10 +13,12 @@ import PopupWithForm from "./PopupWithForm.js";
 //** PopUp with image */
 import PopupWithImage from "./PopupWithImage.js";
 
+import {
+  initialPlaces
+} from "./constants.js";
 
 import {
   formAllSelectors,
-  initialPlaces,
   popupFormAdd,
   popupFormEdit,
   nameInput,
@@ -25,16 +27,26 @@ import {
   buttonAdd
 } from "./constants.js";
 
+import {
+  profilePopup,
+  popupForm,
+  popupProfileOpenButton,
+  profileSubmitButton,
+  popupPlace,
+  placePopupOpenButton,
+  popupPlaceForm,
+  buttonPlaceSubmit
+} from "./domElements.js";
 
 
 
 //** СОЗДАНИЕ НОВОЙ КАРТОЧКИ */ 
-function createCard(data) {
+function createCard(cardData) {
   const newCard = new Card({
-      name: data.name,
-      link: data.link
+      name: cardData.name,
+      link: cardData.link
     },
-    '.template',
+    '.place-template',
     imagePopup.open.bind(imagePopup));
   return newCard.generateCard();
 }
@@ -45,17 +57,17 @@ const cardSection = new Section({
     items: initialPlaces,
     renderer: (item) => cardSection.addItem(createCard(item))
   },
-  ".cards"
+  ".elements"
 );
 
 
-const handleProfileFormSubmit = (formValues) => {
-  userInfo.setUserInfo(formValues.nameInput, formValues.jobInput);
+const handleProfileFormSubmit = (formAllSelectors) => {
+  userInfo.setUserInfo(formAllSelectors.nameInput, formAllSelectors.jobInput);
   popupEdit.close();
 }
 
-const handleCardFormSubmit = (formValues) => {
-  cardSection.addItem(createCard(formValues));
+const handleCardFormSubmit = (formAllSelectors) => {
+  cardSection.addItem(createCard(formAllSelectors));
   popupAdd.close();
 }
 
@@ -104,4 +116,4 @@ formAddValidator.enableValidation();
 
 
 
-cardSection.generateCards();
+cardSection.renderItems();

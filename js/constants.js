@@ -7,15 +7,17 @@ export const buttonAdd = document.querySelector('.profile__add-btn');
 
 
 
+
 export const formAllSelectors = {
-  form: ".popup__form",
-  input: ".popup__input",
-  button: ".popup__save-btn",
-  inputTypeError: "popup__input_type_error",
-  buttonDisabled: "popup__save-btn_disabled",
-  popupError: ".popup__error",
-  template: ".place-template",
-};
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-btn',
+  inactiveButtonClass: 'popup__save-btn_disabled',
+  inputErrorClass: 'popup__input_type_errorr',
+  errorClass: 'popup__error'
+}
+
+
 
 export const initialPlaces = [{
     name: 'Монблан',

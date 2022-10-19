@@ -1,18 +1,19 @@
 export default class Card {
-    constructor(data, cardSelector, handleCardClick) {
-        this._name = data.name;
-        this._link = data.link;
-        this._cardSelector = cardSelector;
+    constructor(cardData, templateSelector, handleCardClick) {
+        this._name = cardData.name;
+        this._link = cardData.link;
+        this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
     }
     //** Добываем элемент шаблона карточки */
     _getTemplate() {
-        const placeTemplate = document
-            .querySelector(this._cardSelector)
+        const cardElement = document
+            .querySelector(this._templateSelector)
             .content
             .querySelector('.place')
             .cloneNode(true);
-        return placeTemplate;
+
+        return cardElement;
     }
     //** Добавляем переключатель кнопки лайк */
     _handleLikeClick() {
@@ -50,11 +51,13 @@ export default class Card {
     generateCard() {
         this._element = this._getTemplate();
 
-        this._image = this._element.querySelector('.place__image');
-        this._element.querySelector('.place__name').textContent = this._name;
+        this._cardImage = this._element.querySelector('.place__image');
+        // this._cardTitle.querySelector('.place__name').textContent = this._name;
+        this._cardTitle = this._element.querySelector('.place__name');
 
-        this._image.src = this._link;
-        this._image.alt = this._name;
+        this._cardTitle.textContent = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
 
         this._setEventListeners();
 
