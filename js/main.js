@@ -19,6 +19,7 @@ import {
 
 import {
   formAllSelectors,
+  profileSelectors,
   popupFormAdd,
   popupFormEdit,
   nameInput,
@@ -26,6 +27,7 @@ import {
   buttonEdit,
   buttonAdd
 } from "./constants.js";
+
 
 import {
   profilePopup,
@@ -75,17 +77,28 @@ const handleCardFormSubmit = (formAllSelectors) => {
 const imagePopup = new PopupWithImage(".popup_zoom");
 const popupEdit = new PopupWithForm(".popup-edit-profile", handleProfileFormSubmit);
 const popupAdd = new PopupWithForm(".popup_add-place", handleCardFormSubmit);
+const userInfo = new UserInfo({
+  name: profileSelectors.name,
+  job: profileSelectors.job
+});
 const formEditValidator = new FormValidator(formAllSelectors, popupFormEdit);
 const formAddValidator = new FormValidator(formAllSelectors, popupFormAdd);
-const userInfo = new UserInfo(".profile__name", ".profile__about");
+
 
 function handleEditProfileButtonClick() {
   popupEdit.open();
   const userInfoObj = userInfo.getUserInfo();
   nameInput.value = userInfoObj.name;
-  jobInput.value = userInfoObj.info;
+  jobInput.value = userInfoObj.job;
   formEditValidator.resetValidation();
 }
+
+
+
+
+
+
+
 
 function handleAddCardButtonClick() {
   popupAdd.open();
@@ -113,7 +126,5 @@ formAddValidator.enableValidation();
 //** Event listeners */
 
 //** open and close edit popup listeners */
-
-
 
 cardSection.renderItems();

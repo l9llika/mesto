@@ -63,27 +63,27 @@
               <input
                 type="text"
                 class="popup__input popup__input_type_error popup_input-name"
-                id="popup_input-name"
+                id="nameInput"
                 placeholder="Имя"
                 name="inputName"
                 maxlength="40"
                 minlength="2"
                 required
               />
-              <span class="popup__error" id="inputName-error"></span>
+              <span class="error" id="nameInput-error"></span>
             </label>
             <label class="popup__field"
               ><input
                 type="text"
                 class="popup__input popup__input_type_error popup_input-job"
-                id="popup_input-job"
+                id="jobInput"
                 placeholder="О себе"
                 name="inputJob"
                 maxlength="200"
                 minlength="2"
                 required
               />
-              <span class="popup__error" id="inputJob-error"></span>
+              <span class="error" id="jobInput-error"></span>
             </label>
             <button
               class="popup__save-btn popup__save-btn_disabled"
@@ -111,23 +111,23 @@
               <input
                 type="text"
                 class="popup__input"
-                id="popup_input-place"
+                id="placeNameInput"
                 placeholder="Название"
                 name="inputPlace"
                 required
               />
-              <span class="popup__error" id="inputPlace-error"></span>
+              <span id="placeNameInput-error" class="error"></span>
             </label>
             <label class="popup__field">
               <input
                 type="url"
                 class="popup__input"
-                id="popup_input-place-link"
+                id="imageSourceInput"
                 placeholder="Ссылка на картинку"
                 name="inputPlaceLink"
                 required
               />
-              <span class="popup__error" id="inputPlaceLink-error"></span>
+              <span id="imageSourceInput-error" class="error"></span>
             </label>
             <button
               class="popup__save-btn popup__save-btn_disabled"
@@ -145,7 +145,6 @@
       <!-- image popup -->
       <div class="popup popup_zoom">
         <div class="popup__zoom-container">
-          <button class="popup__zoom-close-btn"></button>
           <button class="popup__close-btn"></button>
           <img src="#" alt="#" class="popup__zoom-image" />
           <p class="popup__zoom-descriprtion"></p>

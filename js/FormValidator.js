@@ -88,18 +88,33 @@ export default class FormValidator {
   }
 
   _showInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(".popup__error");
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
   }
 
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(".popup__error");
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    console.log(errorElement);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
   }
+
+
+
+  // _showFieldError(inputElement) {
+  //   this._span = this._formType.querySelector(`#${inputElement.name}-error`);
+  //   this._span.textContent = inputElement.validationMessage;
+  // }
+  // _hideFieldError(inputElement) {
+  //   this._span = this._formType.querySelector(`#${inputElement.name}-error`);
+  //   this._span.textContent = "";
+  // }
+
+
+
 
   _checkInputValidity(inputElement) {
     if (inputElement.validity.valid) {

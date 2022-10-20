@@ -1,11 +1,14 @@
 export const popupFormAdd = document.querySelector('.popup__add-form');
 export const popupFormEdit = document.querySelector('.popup-edit-profile');
-export const nameInput = popupFormEdit.querySelector('popup_input-name');
-export const jobInput = popupFormEdit.querySelector('popup_input-job');
+export const nameInput = popupFormEdit.querySelector('.popup_input-name');
+export const jobInput = popupFormEdit.querySelector('.popup_input-job');
 export const buttonEdit = document.querySelector('.profile__edit-btn');
 export const buttonAdd = document.querySelector('.profile__add-btn');
 
-
+export const profileSelectors = {
+  name: ".profile__name",
+  job: ".profile__about"
+};
 
 
 export const formAllSelectors = {
@@ -13,9 +16,9 @@ export const formAllSelectors = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-btn',
   inactiveButtonClass: 'popup__save-btn_disabled',
-  inputErrorClass: 'popup__input_type_errorr',
+  inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error'
-}
+};
 
 
 
