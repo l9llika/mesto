@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Проект: Место</title>
-    <link rel="stylesheet" type="text/css" href="./pages/index.css" />
     <link rel="icon" href="./images/favico.ico" />
   </head>
   <body>
@@ -18,7 +17,7 @@
         <section class="profile">
           <div class="profile__info">
             <img
-              src="./images/profile-avatar.png"
+              src="<%=require('./images/profile-avatar.png')%>"
               alt="Фото профиля"
               class="profile__avatar"
             />
@@ -172,6 +171,5 @@
         ></button>
       </article>
     </template>
-    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

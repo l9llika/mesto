@@ -1,21 +1,21 @@
 //** import css file */
-// import '../pages/index.css';
+import './index.css';
 //** Card */
-import Card from "./Card.js";
+import Card from "../components/Card.js";
 //** FormValidator */
-import FormValidator from "./FormValidator.js";
+import FormValidator from "../components/FormValidator.js";
 //** Section */
-import Section from "./Section.js";
+import Section from "../components/Section.js";
 //** UserInfo */
-import UserInfo from "./UserInfo.js";
+import UserInfo from "../components/UserInfo.js";
 //** PopUp with form */
-import PopupWithForm from "./PopupWithForm.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 //** PopUp with image */
-import PopupWithImage from "./PopupWithImage.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 //** Obj with cards name and links */
 import {
   initialPlaces
-} from "./constants.js";
+} from "../utils/constants.js";
 
 import {
   formAllSelectors,
@@ -26,7 +26,7 @@ import {
   jobInput,
   buttonEdit,
   buttonAdd
-} from "./constants.js";
+} from "../utils/constants.js";
 
 
 

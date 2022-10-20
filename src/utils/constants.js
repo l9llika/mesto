@@ -20,31 +20,36 @@ export const formAllSelectors = {
   errorClass: 'popup__error'
 };
 
-
+import monblancImage from '../images/monblanc.jpg';
+import alicanteImage from '../images/alicante.jpg';
+import aipetriImage from '../images/aipetri.jpg';
+import berhofenImage from '../images/berhofen.jpg';
+import goynukImage from '../images/goynuk.jpg';
+import altayImage from '../images/altay.jpg';
 
 export const initialPlaces = [{
     name: 'Монблан',
-    link: './images/monblanc.jpg'
+    link: monblancImage
   },
   {
     name: 'Аликанте',
-    link: './images/alicante.jpg'
+    link: alicanteImage
   },
   {
     name: 'Ай-Петри',
-    link: './images/aipetri.jpg'
+    link: aipetriImage
   },
   {
     name: 'Берхофен замок в Швейцарии',
-    link: './images/berhofen.jpg'
+    link: berhofenImage
   },
   {
     name: 'Анталья',
-    link: './images/goynuk.jpg'
+    link: goynukImage
   },
   {
     name: 'Алтай Катунь',
-    link: './images/altay.jpg'
+    link: altayImage
   },
   {
     name: 'Архыз',
