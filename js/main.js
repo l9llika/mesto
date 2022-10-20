@@ -55,7 +55,6 @@ const handleProfileFormSubmit = (profileSelectors) => {
   userInfo.setUserInfo(profileSelectors);
   popupEdit.close();
 }
-console.log(handleProfileFormSubmit);
 
 const handleCardFormSubmit = (formAllSelectors) => {
   cardSection.addItem(createCard(formAllSelectors));
