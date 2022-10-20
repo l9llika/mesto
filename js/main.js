@@ -12,7 +12,7 @@ import UserInfo from "./UserInfo.js";
 import PopupWithForm from "./PopupWithForm.js";
 //** PopUp with image */
 import PopupWithImage from "./PopupWithImage.js";
-
+//** Obj with cards name and links */
 import {
   initialPlaces
 } from "./constants.js";
@@ -29,20 +29,8 @@ import {
 } from "./constants.js";
 
 
-import {
-  profilePopup,
-  popupForm,
-  popupProfileOpenButton,
-  profileSubmitButton,
-  popupPlace,
-  placePopupOpenButton,
-  popupPlaceForm,
-  buttonPlaceSubmit
-} from "./domElements.js";
 
-
-
-//** СОЗДАНИЕ НОВОЙ КАРТОЧКИ */ 
+//** NEW CARD CREATION */ 
 function createCard(cardData) {
   const newCard = new Card({
       name: cardData.name,
@@ -54,7 +42,7 @@ function createCard(cardData) {
 }
 
 
-//НОВЫЙ КЛАСС СЕКЦИИ МЕСТ И ВСТАВКА В РАЗМЕТКУ
+//** Section with cards creation */
 const cardSection = new Section({
     items: initialPlaces,
     renderer: (item) => cardSection.addItem(createCard(item))
@@ -62,29 +50,33 @@ const cardSection = new Section({
   ".elements"
 );
 
-
-const handleProfileFormSubmit = (formAllSelectors) => {
-  userInfo.setUserInfo(formAllSelectors.nameInput, formAllSelectors.jobInput);
+//** SUBMITS FOR PROFILE AND NEW CARD  */
+const handleProfileFormSubmit = (profileSelectors) => {
+  userInfo.setUserInfo(profileSelectors);
   popupEdit.close();
 }
+console.log(handleProfileFormSubmit);
 
 const handleCardFormSubmit = (formAllSelectors) => {
   cardSection.addItem(createCard(formAllSelectors));
   popupAdd.close();
-}
+};
 
-
+//** NEW CLASS CREATIONS */
+// popups
 const imagePopup = new PopupWithImage(".popup_zoom");
 const popupEdit = new PopupWithForm(".popup-edit-profile", handleProfileFormSubmit);
 const popupAdd = new PopupWithForm(".popup_add-place", handleCardFormSubmit);
+// userinfo
 const userInfo = new UserInfo({
   name: profileSelectors.name,
   job: profileSelectors.job
 });
+// validation
 const formEditValidator = new FormValidator(formAllSelectors, popupFormEdit);
 const formAddValidator = new FormValidator(formAllSelectors, popupFormAdd);
 
-
+//**  */
 function handleEditProfileButtonClick() {
   popupEdit.open();
   const userInfoObj = userInfo.getUserInfo();
@@ -93,17 +85,13 @@ function handleEditProfileButtonClick() {
   formEditValidator.resetValidation();
 }
 
-
-
-
-
-
-
-
 function handleAddCardButtonClick() {
   popupAdd.open();
   formAddValidator.resetValidation();
 }
+
+
+//** EVENT LISTENERS */
 
 buttonEdit.addEventListener('click', handleEditProfileButtonClick);
 buttonAdd.addEventListener('click', handleAddCardButtonClick);
@@ -115,16 +103,5 @@ popupAdd.setEventListeners();
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
-
-// popupImage.setEventListeners();
-// popupProfile.setEventListeners();
-// popupWithFormCards.setEventListeners();
-// section.generateCards();
-
-//** ВАЛИДАЦИЯ ФОРМ */
-
-//** Event listeners */
-
-//** open and close edit popup listeners */
-
+//** RENDER CARDS */
 cardSection.renderItems();

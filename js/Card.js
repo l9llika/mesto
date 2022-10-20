@@ -5,6 +5,7 @@ export default class Card {
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
     }
+    //** private methods */
     //** Добываем элемент шаблона карточки */
     _getTemplate() {
         const cardElement = document
@@ -47,6 +48,7 @@ export default class Card {
         });
 
     }
+    //** public methods */
     //** Создание элемента карточки  */
     generateCard() {
         this._element = this._getTemplate();
