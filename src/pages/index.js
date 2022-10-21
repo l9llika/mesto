@@ -29,7 +29,6 @@ import {
 } from "../utils/constants.js";
 
 
-
 //** NEW CARD CREATION */ 
 function createCard(cardData) {
   const newCard = new Card({

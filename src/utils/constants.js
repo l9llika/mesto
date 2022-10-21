@@ -1,7 +1,7 @@
 export const popupFormAdd = document.querySelector('.popup__add-form');
 export const popupFormEdit = document.querySelector('.popup-edit-profile');
-export const nameInput = popupFormEdit.querySelector('.popup_input-name');
-export const jobInput = popupFormEdit.querySelector('.popup_input-job');
+export const nameInput = popupFormEdit.querySelector('.popup__input-name');
+export const jobInput = popupFormEdit.querySelector('.popup__input-job');
 export const buttonEdit = document.querySelector('.profile__edit-btn');
 export const buttonAdd = document.querySelector('.profile__add-btn');
 
