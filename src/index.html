@@ -44,7 +44,7 @@
           ></button>
         </section>
         <!-- ./profile -->
-        <section class="elements"></section>
+        <section class="elements"><ul class="elements__list"></ul></section>
         <!-- ./elements -->
       </main>
       <!-- ./main -->
@@ -168,28 +168,28 @@
       </div>
     </div>
     <!-- ./popup confirmation -->
-     <div class="popup popup_change-avatar">
-        <div class="popup__container">
-          <h2 class="popup__title">Обновить аватар</h2>
-          <form name="changeAvatar" class="popup__form" novalidate>
-            <label class="popup__field">
-              <input
-                class="popup__input popup__input_type_link"
-                placeholder="Ссылка на картинку"
-                required
-                type="url"
-                name="avatar"
-              />
-              <span class="popup__error" id="avatar-error"></span>
-            </label>
-            <button type="submit" class="popup__save-btn" disabled>
-              Сохранить
-            </button>
-          </form>
-          <button type="button" class="popup__close-button"></button>
-        </div>
+    <div class="popup popup_change-avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form name="changeAvatar" class="popup__form" novalidate>
+          <label class="popup__field">
+            <input
+              class="popup__input popup__input_type_link"
+              placeholder="Ссылка на картинку"
+              required
+              type="url"
+              name="avatar"
+            />
+            <span class="popup__error" id="avatar-error"></span>
+          </label>
+          <button type="submit" class="popup__save-btn" disabled>
+            Сохранить
+          </button>
+        </form>
+        <button type="button" class="popup__close-btn"></button>
       </div>
     </div>
+    <!-- /.popup_change-avatar -->
     <div class="popup popup_opened popup_loader popup_zoom"></div>
     <template class="place-template">
       <article class="place">

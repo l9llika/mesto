@@ -37,11 +37,9 @@ import {
 
 const popupAvatarElement = profileSelectors.popupAvatar;
 const popupLoader = new Popup(profileSelectors.loaderPopup);
-const popupConfirm = new PopupConfirm(profileSelectors.confirmationPopup);
+const popupConfirm = new PopupConfirm(profileSelectors.confirmPopup);
 
 const cardsArrayFromServer = [];
-
-console.log(popupLoader);
 
 const handleDeleteCard = (id, cardElement) => {
   popupConfirm.open();
@@ -74,7 +72,7 @@ fetch('https://nomoreparties.co/v1/cohort-52/users/me', {
 
 //** NEW CARD CREATION */ 
 const createCard = (cardData) => {
-  const card = new Card(cardData, ".elements", {
+  const card = new Card(cardData, profileSelectors.template, {
     handleCardClick: (obj) => popupImage.open(obj),
     openPopupConfirm: (id) => handleDeleteCard(id, card),
     handleLikeClick: (evt, id) => handleLike(evt, id, card),
@@ -109,7 +107,6 @@ const userInfo = new UserInfo({
   job: profileSelectors.job,
   avatar: profileSelectors.avatar,
 });
-console.log(userInfo);
 
 Promise.all([api.getUserInformation(), api.getInitialCards()])
   .then(([userData, initialCards]) => {
@@ -139,7 +136,7 @@ const section = new Section({
 );
 
 const popupProfile = new PopupWithForm({
-  popupSelector: popupFormEdit,
+  popupSelector: profileSelectors.popupFormEdit,
   handleSubmit: (values) =>
     api
     .editUserInformation(values)
@@ -149,24 +146,28 @@ const popupProfile = new PopupWithForm({
         job: res.about,
         avatar: res.avatar,
       });
-      popupFormEdit.handleSubmitButton({
+      profileSelectors.popupFormEdit.handleSubmitButton({
         isLoading: false
       });
-      popupFormEdit.close();
+      profileSelectors.popupFormEdit.close();
     })
     .catch((error) => console.log(error)),
 });
 console.log(popupProfile);
-
+// console.log(popupAvatar);
+const popupaddplc1 = popupAddPlace.querySelector(".popup__close-btn");
+console.log(popupaddplc1);
+console.log();
+console.log();
 const popupWithFormCards = new PopupWithForm({
-  popupSelector: popupAddPlace,
+  popupSelector: profileSelectors.popupAddPlace,
   handleSubmit: ({
-    place,
+    name,
     link
   }) => {
     api
       .addNewCard({
-        place,
+        name,
         link
       })
       .then((res) => {
@@ -180,6 +181,7 @@ const popupWithFormCards = new PopupWithForm({
       .catch((error) => console.log(error));
   },
 });
+
 console.log(popupWithFormCards);
 
 const popupAvatar = new PopupWithForm({
@@ -199,7 +201,6 @@ const popupAvatar = new PopupWithForm({
       .catch((error) => console.log(error));
   },
 });
-console.log(popupAvatar);
 //** SUBMITS FOR PROFILE AND NEW CARD  */
 const handleProfileFormSubmit = (profileSelectors) => {
   userInfo.setUserInfo(profileSelectors);

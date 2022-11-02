@@ -1,4 +1,4 @@
-export const popupAddPlace = document.querySelector('popup_add-place');
+export const popupAddPlace = document.querySelector('.popup_add-place');
 export const popupFormAdd = document.querySelector('.popup__add-form');
 export const popupFormEdit = document.querySelector('.popup-edit-profile');
 
@@ -11,11 +11,14 @@ export const profileSelectors = {
   name: ".profile__name",
   job: ".profile__about",
   avatar: ".profile__avatar",
-  cardList: ".elements",
+  cardList: ".elements__list",
   loaderPopup: ".popup_loader",
   imagePopup: ".popup_zoom",
-  confirmationPopup: ".popup_confirmation",
-  popupAvatar: ".popup_change-avatar"
+  confirmPopup: ".popup_confirmation",
+  popupAvatar: ".popup_change-avatar",
+  template: ".place-template",
+  popupAddPlace: ".popup_add-place",
+  popupFormEdit: ".popup-edit-profile"
 };
 
 
