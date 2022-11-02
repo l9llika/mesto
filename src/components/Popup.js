@@ -1,12 +1,23 @@
+import {
+  ESCAPE_KEY
+} from "../utils/constants.js";
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._buttonClose = this._popup.querySelector(".popup__close-btn");
+    this._handleEsc = this._handleEscClose.bind(this);
   }
   //** private methods */
   _handleEscClose(evt) {
-    if (evt.key === "Escape") {
+    if (evt.key === ESCAPE_KEY) {
       this.close();
     }
+  }
+  _handleCloseByOverlay(event) {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    this.close();
   }
   //** public methods */
   open() {
@@ -20,10 +31,9 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popup.addEventListener('click', (evt) => {
-      if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-btn')) {
-        this.close();
-      }
+    this._popup.addEventListener("mousedown", (event) => {
+      this._handleCloseByOverlay(event);
     });
+    this._buttonClose.addEventListener("click", () => this.close());
   }
 }

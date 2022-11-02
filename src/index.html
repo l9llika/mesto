@@ -16,11 +16,15 @@
       <main>
         <section class="profile">
           <div class="profile__info">
-            <img
-              src="<%=require('./images/profile-avatar.png')%>"
-              alt="Фото профиля"
-              class="profile__avatar"
-            />
+            <div class="profile__image-container">
+              <img
+                src="<%=require('./images/profile-avatar.png')%>"
+                alt="Фото профиля"
+                class="profile__avatar"
+              />
+              <button type="button" class="profile__edit-btn-avatar"></button>
+            </div>
+
             <div class="profile__description">
               <div class="profile__description-wrapper">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -151,6 +155,42 @@
       </div>
       <!-- ./image popup -->
     </div>
+    <!-- popup confirmation -->
+    <div class="popup popup_confirmation popup_zoom">
+      <div class="popup__container">
+        <h2 class="popup__confirmation-title">Вы уверены?</h2>
+        <form name="confirmation" class="popup__form">
+          <button type="submit" class="popup__save-btn popup_save-btn_confirm">
+            Да
+          </button>
+        </form>
+        <button type="button" class="popup__close-btn"></button>
+      </div>
+    </div>
+    <!-- ./popup confirmation -->
+     <div class="popup popup_change-avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form name="changeAvatar" class="popup__form" novalidate>
+            <label class="popup__field">
+              <input
+                class="popup__input popup__input_type_link"
+                placeholder="Ссылка на картинку"
+                required
+                type="url"
+                name="avatar"
+              />
+              <span class="popup__error" id="avatar-error"></span>
+            </label>
+            <button type="submit" class="popup__save-btn" disabled>
+              Сохранить
+            </button>
+          </form>
+          <button type="button" class="popup__close-button"></button>
+        </div>
+      </div>
+    </div>
+    <div class="popup popup_opened popup_loader popup_zoom"></div>
     <template class="place-template">
       <article class="place">
         <button class="place__image-btn" name="image-btn" type="button">
@@ -158,11 +198,14 @@
         </button>
         <div class="place__description">
           <h2 class="place__name"></h2>
-          <button
-            type="button"
-            name="like-btn"
-            class="place__choice-btn"
-          ></button>
+          <div class="place__like-container">
+            <button
+              type="button"
+              name="like-btn"
+              class="place__like-btn"
+            ></button>
+            <span class="place__like-count">0</span>
+          </div>
         </div>
         <button
           type="button"
