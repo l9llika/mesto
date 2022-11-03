@@ -11,24 +11,35 @@ export const profileSelectors = {
   name: ".profile__name",
   job: ".profile__about",
   avatar: ".profile__avatar",
-  cardList: ".elements__list",
+  cardList: ".elements",
   loaderPopup: ".popup_loader",
   imagePopup: ".popup_zoom",
   confirmPopup: ".popup_confirmation",
   popupAvatar: ".popup_change-avatar",
   template: ".place-template",
   popupAddPlace: ".popup_add-place",
-  popupFormEdit: ".popup-edit-profile"
+  popupFormEdit: ".popup-edit-profile",
+  popupFormAdd: ".popup__add-form"
 };
 
+// export const selectorClasses = {
+//   form: ".popup__form",
+//   button: ".popup__submit-button",
+//   input: ".popup__input",
+//   inputError: "popup__input_type_error",
+//   buttonDisabled: "popup__submit-button_disabled",
+//   span: ".popup__error",
+//   template: ".gallery__template",
+// };
 
 export const formAllSelectors = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-btn',
-  inactiveButtonClass: 'popup__save-btn_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error'
+  form: '.popup__form',
+  input: '.popup__input',
+  button: '.popup__save-btn',
+  buttonDisabled: 'popup__save-btn_disabled',
+  inputError: 'popup__input_type_error',
+  span: 'popup__error',
+  template: '.place-template'
 };
 
 export const ESCAPE_KEY = "Escape";

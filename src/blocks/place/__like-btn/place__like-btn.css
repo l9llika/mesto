@@ -1,4 +1,4 @@
-.place__choice-btn {
+.place__like-btn {
   padding: 0;
   width: 22px;
   height: 19px;
@@ -7,6 +7,6 @@
   background-color: transparent;
   cursor: pointer;
 }
-.place__choice-btn:hover {
+.place__like-btn:hover {
   opacity: 0.5;
 }
