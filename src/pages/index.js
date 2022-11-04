@@ -81,6 +81,7 @@ const createCard = (cardData) => {
   return cardElement;
 };
 
+// console.log(card);
 const handleLike = (_, id, card) => {
   const isCardLiked = card.isLikedByUser();
   card.handleLikeButtonState({
@@ -97,6 +98,8 @@ const handleLike = (_, id, card) => {
     })
     .catch((error) => console.log(error));
 };
+
+
 
 
 const userInfo = new UserInfo({
@@ -134,52 +137,6 @@ const section = new Section({
   profileSelectors.cardList
 );
 
-
-
-const popupProfile = new PopupWithForm({
-  popupSelector: profileSelectors.popupFormEdit,
-  handleSubmit: (values) =>
-    api
-    .editUserInformation(values)
-    .then((res) => {
-      userInfo.setUserInfo({
-        name: res.name,
-        job: res.about,
-        avatar: res.avatar,
-      });
-      profileSelectors.popupFormEdit.handleSubmitButton({
-        isLoading: false
-      });
-      profileSelectors.popupFormEdit.close();
-    })
-    .catch((error) => console.log(error)),
-});
-
-
-const popupWithFormCards = new PopupWithForm({
-  popupSelector: profileSelectors.popupAddPlace,
-  handleSubmit: ({
-    name,
-    link
-  }) => {
-    api
-      .addNewCard({
-        name,
-        link
-      })
-      .then((res) => {
-        const cardElement = createCard(res);
-        section.addItem(cardElement);
-        popupWithFormCards.handleSubmitButton({
-          isLoading: false
-        });
-        popupWithFormCards.close();
-      })
-      .catch((error) => console.log(error));
-  },
-});
-
-
 const popupAvatar = new PopupWithForm({
   popupSelector: profileSelectors.popupAvatar,
   handleSubmit: ({
@@ -197,6 +154,69 @@ const popupAvatar = new PopupWithForm({
       .catch((error) => console.log(error));
   },
 });
+
+
+const popupProfile = new PopupWithForm({
+  popupSelector: profileSelectors.popupFormEdit,
+  handleSubmit: (values) =>
+    api
+    .editUserInformation(values)
+    .then((res) => {
+      userInfo.setUserInfo({
+        name: res.name,
+        job: res.about,
+        avatar: res.avatar,
+      });
+      popupProfile.handleSubmitButton({
+        isLoading: false
+      });
+      popupProfile.close();
+    })
+    .catch((error) => console.log(error)),
+});
+
+console.log(popupProfile)
+
+
+const popupWithFormCards = new PopupWithForm({
+  popupSelector: profileSelectors.popupAddPlace,
+  handleSubmit: ({
+    place,
+    link
+  }) => {
+    api
+      .addNewCard({
+        place,
+        link
+      })
+      .then((res) => {
+        const cardElement = createCard(res);
+        section.addItem(cardElement);
+        popupWithFormCards.handleSubmitButton({
+          isLoading: false
+        });
+        popupWithFormCards.close();
+      })
+      .catch((error) => console.log(error));
+  },
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //** SUBMITS FOR PROFILE AND NEW CARD  */
 const handleProfileFormSubmit = (profileSelectors) => {
   userInfo.setUserInfo(profileSelectors);
@@ -213,7 +233,7 @@ const handleCardFormSubmit = (formAllSelectors) => {
 
 
 const popupImage = new PopupWithImage(profileSelectors.imagePopup);
-
+console.log(popupImage);
 
 popupImage.setEventListeners();
 popupProfile.setEventListeners();
@@ -221,7 +241,7 @@ popupWithFormCards.setEventListeners();
 popupConfirm.setEventListeners();
 popupAvatar.setEventListeners();
 // // // validation
-
+// console.log(profileSelectors.popupAddPlace);
 const formProfileCheckValid = new FormValidator(formAllSelectors, profilePopup);
 const formPlaceCheckValid = new FormValidator(formAllSelectors, popupPlace);
 const formAvatarCheckValid = new FormValidator(formAllSelectors, popupAvatarElement);

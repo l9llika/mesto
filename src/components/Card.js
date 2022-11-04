@@ -35,10 +35,13 @@ export default class Card {
         this._element.querySelector(".place__name").textContent = this._name;
         this._likeCount = this._element.querySelector(".place__like-count");
         this._deleteButton = this._element.querySelector(".place__trash-btn");
+
         this._image = this._element.querySelector(".place__image");
         this._image.src = this._link;
         this._image.alt = this._name;
+
         this._currentUserId = localStorage.getItem("userId");
+
         this.setLikesValue({
             likes: this._likes
         });

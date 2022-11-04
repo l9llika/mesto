@@ -42,15 +42,6 @@ export const profileSelectors = {
   popupFormAdd: ".popup__add-form"
 };
 
-// export const selectorClasses = {
-//   form: ".popup__form",
-//   button: ".popup__submit-button",
-//   input: ".popup__input",
-//   inputError: "popup__input_type_error",
-//   buttonDisabled: "popup__submit-button_disabled",
-//   span: ".popup__error",
-//   template: ".gallery__template",
-// };
 
 export const formAllSelectors = {
   form: '.popup__form',

@@ -6,7 +6,7 @@ import {
 
 class Api {
   constructor(setting) {
-    this._url = setting.baseUrl; //** this._address */
+    this._address = setting.baseUrl;
     this._headers = setting.headers;
   }
 
@@ -18,14 +18,14 @@ class Api {
   }
 
   getUserInformation() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: "GET",
       headers: this._headers,
     }).then((res) => this.handelResponse(res));
   }
 
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: "GET",
       headers: this._headers,
     }).then((res) => this.handelResponse(res));
@@ -35,7 +35,7 @@ class Api {
     job,
     name
   }) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -49,39 +49,39 @@ class Api {
     name,
     link
   }) {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        link
+        link,
       }),
     }).then((res) => this.handelResponse(res));
   }
 
   deleteOwnCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
+    return fetch(`${this._address}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this.handelResponse(res));
   }
 
   likeCard(id) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._address}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
     }).then((res) => this.handelResponse(res));
   }
 
   removeCardLike(id) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
+    return fetch(`${this._address}/cards/${id}/likes`, {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this.handelResponse(res));
   }
 
   changeAvatar(avatar) {
-    return fetch(`${this._url}/users/me/avatar`, {
+    return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
@@ -90,6 +90,8 @@ class Api {
     }).then((res) => this.handelResponse(res));
   }
 }
+
+
 
 export const api = new Api({
   baseUrl: BASE_URL,
