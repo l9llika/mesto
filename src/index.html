@@ -61,7 +61,7 @@
           <form
             action="submit"
             class="popup__form"
-            name="profile-edit"
+            name="changeProfile"
             novalidate
           >
             <label class="popup__field">
@@ -75,7 +75,7 @@
                 minlength="2"
                 required
               />
-              <span class="error" id="nameInput-error"></span>
+              <span class="error" id="name-error"></span>
             </label>
             <label class="popup__field"
               ><input
@@ -88,7 +88,7 @@
                 minlength="2"
                 required
               />
-              <span class="error" id="jobInput-error"></span>
+              <span class="error" id="job-error"></span>
             </label>
             <button
               class="popup__save-btn popup__save-btn_disabled"
@@ -110,7 +110,7 @@
           <form
             action="submit"
             class="popup__form popup__add-form"
-            name="add-place"
+            name="createPlace"
           >
             <label class="popup__field">
               <input
@@ -118,7 +118,7 @@
                 class="popup__input"
                 id="placeNameInput"
                 placeholder="Название"
-                name="name"
+                name="placeNameInput"
                 required
               />
               <span id="placeNameInput-error" class="error"></span>
@@ -129,7 +129,7 @@
                 class="popup__input"
                 id="imageSourceInput"
                 placeholder="Ссылка на картинку"
-                name="link"
+                name="imageSourceInput"
                 required
               />
               <span id="imageSourceInput-error" class="error"></span>
@@ -150,7 +150,7 @@
       <!-- image popup -->
       <div class="popup popup_zoom">
         <div class="popup__zoom-container">
-          <button class="popup__zoom-close-btn"></button>
+          <button class="popup__close-btn"></button>
           <img src="#" alt="#" class="popup__zoom-image" />
           <p class="popup__zoom-descriprtion"></p>
         </div>
@@ -173,14 +173,20 @@
     <div class="popup popup_change-avatar">
       <div class="popup__container">
         <h2 class="popup__title">Обновить аватар</h2>
-        <form name="changeAvatar" class="popup__form" novalidate>
+        <form
+          name="changeAvatar"
+          class="popup__form"
+          name="changeAvatar"
+          novalidate
+        >
           <label class="popup__field">
             <input
               class="popup__input popup__input_type_link"
               placeholder="Ссылка на картинку"
-              required
               type="url"
               name="avatar"
+              minlength="2"
+              required
             />
             <span class="popup__error" id="avatar-error"></span>
           </label>

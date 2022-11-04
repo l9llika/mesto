@@ -24,10 +24,17 @@ import {
 
 import {
   formAllSelectors,
-  profileSelectors
+  profileSelectors,
+  placePopupOpenButton,
+  openButtonChangeAvatar,
+  popupProfileOpenButton,
+  popupFormEdit,
+  popupFormAdd,
+  profilePopup,
+  popupAvatar as popupAvatarElement,
+  popupPlace
 } from "../utils/constants.js";
 
-const popupAvatarElement = profileSelectors.popupAvatar;
 const popupLoader = new Popup(profileSelectors.loaderPopup);
 const popupConfirm = new PopupConfirm(profileSelectors.confirmPopup);
 
@@ -148,6 +155,7 @@ const popupProfile = new PopupWithForm({
     .catch((error) => console.log(error)),
 });
 
+
 const popupWithFormCards = new PopupWithForm({
   popupSelector: profileSelectors.popupAddPlace,
   handleSubmit: ({
@@ -204,20 +212,19 @@ const handleCardFormSubmit = (formAllSelectors) => {
 // popups
 
 
-// const popupImage = new PopupWithImage(profileSelectors.imagePopup);
+const popupImage = new PopupWithImage(profileSelectors.imagePopup);
 
 
-// userinfo
-
+popupImage.setEventListeners();
+popupProfile.setEventListeners();
+popupWithFormCards.setEventListeners();
+popupConfirm.setEventListeners();
+popupAvatar.setEventListeners();
 // // // validation
 
-
-
-// const formProfileCheckValid = new FormValidator(formAllSelectors, profileSelectors.popupFormEdit);
-// const formPlaceCheckValid = new FormValidator(formAllSelectors, profileSelectors.popupFormAdd);
-// const formAvatarCheckValid = new FormValidator(formAllSelectors, popupAvatarElement);
-
-
+const formProfileCheckValid = new FormValidator(formAllSelectors, profilePopup);
+const formPlaceCheckValid = new FormValidator(formAllSelectors, popupPlace);
+const formAvatarCheckValid = new FormValidator(formAllSelectors, popupAvatarElement);
 
 // //**  */
 // function handleEditProfileButtonClick() {
@@ -232,42 +239,30 @@ const handleCardFormSubmit = (formAllSelectors) => {
 //   popupAdd.open();
 //   formAddValidator.resetValidation();
 // }
-
+// this._formType.checkValidity is not a function
 
 //** EVENT LISTENERS */
+popupProfileOpenButton.addEventListener("click", () => {
+  formProfileCheckValid.clearFormErrors();
+  const initialData = userInfo.getUserInfo();
+  popupProfile.setInitialValues(initialData);
+  popupProfile.open();
+});
 
-// popupImage.setEventListeners();
-popupProfile.setEventListeners();
-popupWithFormCards.setEventListeners();
-popupConfirm.setEventListeners();
-popupAvatar.setEventListeners();
+placePopupOpenButton.addEventListener("click", () => {
+  formPlaceCheckValid.clearFormErrors();
+  popupWithFormCards.open();
+});
+openButtonChangeAvatar.addEventListener("click", () => {
+  formAvatarCheckValid.clearFormErrors();
+  popupAvatar.open();
+});
 
 
-// popupProfileOpenButton.addEventListener("click", () => {
-//   formProfileCheckValid.clearFormErrors();
-//   const initialData = userInfo.getUserInfo();
-//   popupProfile.setInitialValues(initialData);
-//   popupProfile.open();
-// });
-// placePopupOpenButton.addEventListener("click", () => {
-//   formPlaceCheckValid.clearFormErrors();
-//   popupWithFormCards.open();
-// });
-// openButtonChangeAvatar.addEventListener("click", () => {
-//   formAvatarCheckValid.clearFormErrors();
-//   popupAvatar.open();
-// });
 
-// buttonEdit.addEventListener('click', handleEditProfileButtonClick);
-// buttonAdd.addEventListener('click', handleAddCardButtonClick);
-
-// imagePopup.setEventListeners();
-// popupEdit.setEventListeners();
-// popupAdd.setEventListeners();
-
-// formAvatarCheckValid.enableValidation();
-// formEditValidator.enableValidation();
-// formPlaceCheckValid.enableValidation();
+formAvatarCheckValid.enableValidation();
+formPlaceCheckValid.enableValidation();
+formProfileCheckValid.enableValidation();
 
 //** RENDER CARDS */
 // cardSection.renderItems();

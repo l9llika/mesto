@@ -9,8 +9,8 @@ export default class FormValidator {
     // this._inputSelector = config.inputSelector;
     // this._submitButtonSelector = config.submitButtonSelector;
     // this._inactiveButtonClass = config.inactiveButtonClass;
-    // this._inputErrorClass = config.inputErrorClass;
-    // this._errorClass = config.errorClass;
+    this._inputError = config.inputError;
+    this._span = config.span;
     // this._formElement = formElement;
     // this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     // this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
@@ -24,12 +24,32 @@ export default class FormValidator {
     this._setSubmitButtonFormState(this._formType);
   }
 
+
+
+
+
+
+
   _showFieldError(input) {
-    this._span = this._formType.querySelector(`#${input.id}-error`);
+    // const errorEl = this._formElement.querySelector(`#${input.name}-error`);
+    // input.classList.add(this._inputError);
+    // errorEl.classList.add(this._span);
+    // errorEl.textContent = inputElement.validationMessage;
+
+
+
+    this._span = this._formType.querySelector(`#${input.name}-error`);
     this._span.textContent = input.validationMessage;
   }
   _hideFieldError(input) {
-    this._span = this._formType.querySelector(`#${input.id}-error`);
+    // const errorEl = this._formElement.querySelector(`#${input.name}-error`);
+    // input.classList.remove(this._inputError);
+    // errorEl.classList.remove(this._span);
+    // errorEl.textContent = '';
+
+
+
+    this._span = this._formType.querySelector(`#${input.name}-error`);
     this._span.textContent = "";
   }
 
@@ -56,8 +76,6 @@ export default class FormValidator {
 
   // _showInputError(inputElement) { // show field error
   //   const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-  //   inputElement.classList.add(this._inputErrorClass);
-  //   errorElement.classList.add(this._errorClass);
   //   errorElement.textContent = inputElement.validationMessage;
   // }
 
@@ -93,7 +111,6 @@ export default class FormValidator {
       this._handleFormInput(evt)
     );
   }
-
   clearFormErrors() {
     this._setSubmitButtonStateNotValid();
     this._inputs.forEach((input) => {
