@@ -56,10 +56,7 @@ export default class Card {
 
     //** Добавляем переключатель кнопки лайк */
     _handleCardLike(evt) {
-        this.handleLikeClick(evt, {
-            likes: this._likes,
-            id: this._cardId
-        });
+        this.handleLikeClick(evt, this._cardId);
     }
     //** Добавляем клик по изображению */
     _handleImageClick() {
@@ -98,7 +95,6 @@ export default class Card {
         } else {
             this._likeButton.classList.remove("place__like-btn_active");
         }
-
         this._likeCount.textContent = likes.length;
         this._likes = likes;
     }
@@ -127,3 +123,126 @@ export default class Card {
         });
     }
 }
+
+
+
+// class Card {
+//     constructor(
+//         cardData,
+//         templateSelector, {
+//             handleCardClick,
+//             openPopupConfirm,
+//             handleLikeClick
+//         }
+//     ) {
+//         this._place = cardData.name;
+//         this._link = cardData.link;
+//         this._likes = cardData.likes;
+//         this._cardId = cardData._id;
+//         this._owner = cardData.owner._id;
+
+//         this._cardSelector = templateSelector;
+//         this._handleCardClick = handleCardClick;
+//         this.handleLikeClick = handleLikeClick;
+//         this._openPopupConfirm = openPopupConfirm;
+//     }
+
+//     _getTemplate() {
+//         const cardElement = document
+//             .querySelector(this._cardSelector)
+//             .content.querySelector(".place")
+//             .cloneNode(true);
+//         return cardElement;
+//     }
+
+//     generateCard() {
+//         this._element = this._getTemplate();
+
+//         this._likeButton = this._element.querySelector(".place__like-btn");
+//         this._element.querySelector(".place__title").textContent = this._place;
+//         this._likeCount = this._element.querySelector(".place__like-count");
+//         this._deleteButton = this._element.querySelector(".place__delete-btn");
+
+//         this._image = this._element.querySelector(".place__image");
+//         this._image.src = this._link;
+//         this._image.alt = this._place;
+
+//         this._currentUserId = localStorage.getItem("userId");
+//         this._updateLikeState();
+
+//         if (!this._isOwner()) {
+//             this._deleteButton.classList.add("place__trash-btn_hidden");
+//         }
+
+//         this._setEventListeners();
+//         return this._element;
+//     }
+
+//     _isOwner() {
+//         return this._owner === this._currentUserId;
+//     }
+
+//     removeCard() {
+//         this._element.remove();
+//         this._element = null;
+//     }
+
+//     handleLikeButtonState({
+//         isLoading
+//     }) {
+//         if (isLoading) {
+//             this._likeButton.disabled = true;
+//             this._likeButton.classList.add("place__like-btn-loading");
+//         } else {
+//             this._likeButton.disabled = false;
+//             this._likeButton.classList.remove("place__like-btn-loading");
+//         }
+//     }
+
+//     _handleCardLike(evt) {
+//         this.handleLikeClick(evt, this._cardId);
+//     }
+
+//     isLikedByUser() {
+//         return this._likes.some((ownLike) => ownLike._id === this._currentUserId);
+//     }
+
+//     _updateLikeState() {
+//         this._isLiked = this.isLikedByUser();
+//         this._likeCount.textContent = this._likes.length;
+
+//         if (this._isLiked) {
+//             this._likeButton.classList.add("place__like-btn_active");
+//         } else {
+//             this._likeButton.classList.remove("place__like-btn_active");
+//         }
+//     }
+
+//     setLikesValue(likes) {
+//         this._likes = likes;
+//         this._updateLikeState();
+//     }
+
+//     _handleDeleteCard() {
+//         this._openPopupConfirm(this._cardId, this._element);
+//     }
+
+//     _setEventListeners() {
+//         this._likeButton.addEventListener("click", (evt) => {
+//             this._handleCardLike(evt);
+//         });
+
+//         this._deleteButton.addEventListener("click", () => {
+//             this._handleDeleteCard();
+//         });
+
+//         this._image.addEventListener("click", () => {
+//             this._handleCardClick({
+//                 place: this._place,
+//                 link: this._link
+//             });
+//         });
+//     }
+// }
+
+// export default Card;
