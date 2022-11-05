@@ -90,13 +90,13 @@ export default class Card {
         likes
     }) {
         this._isLiked = this.isLikedByUser(likes);
+        this._likes = likes;
         if (this._isLiked) {
             this._likeButton.classList.add("place__like-btn_active");
         } else {
             this._likeButton.classList.remove("place__like-btn_active");
         }
         this._likeCount.textContent = likes.length;
-        this._likes = likes;
     }
 
     //** check likes by user */

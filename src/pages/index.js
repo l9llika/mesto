@@ -91,7 +91,7 @@ const handleLike = (_, id, card) => {
 
   action
     .then((res) => {
-      card.setLikesValue(res.likes);
+      card.setLikesValue(res);
       card.handleLikeButtonState({
         isLoadig: false
       });
