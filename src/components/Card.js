@@ -104,8 +104,8 @@ export default class Card {
     }
 
     //** check likes by user */
-    isLikedByUser(likesArray) {
-        return likesArray.some((ownLike) => ownLike._id === this._currentUserId);
+    isLikedByUser() {
+        return this._likes.some((ownLike) => ownLike._id === this._currentUserId);
     }
     //**  */
     _isOwner() {

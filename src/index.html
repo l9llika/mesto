@@ -116,23 +116,23 @@
               <input
                 type="text"
                 class="popup__input"
-                id="placeNameInput"
+                id="name"
                 placeholder="Название"
-                name="placeNameInput"
+                name="name"
                 required
               />
-              <span id="placeNameInput-error" class="error"></span>
+              <span id="name-error" class="error"></span>
             </label>
             <label class="popup__field">
               <input
                 type="url"
                 class="popup__input"
-                id="imageSourceInput"
+                id="link"
                 placeholder="Ссылка на картинку"
-                name="imageSourceInput"
+                name="link"
                 required
               />
-              <span id="imageSourceInput-error" class="error"></span>
+              <span id="link-error" class="error"></span>
             </label>
             <button
               class="popup__save-btn popup__save-btn_disabled"
@@ -156,75 +156,78 @@
         </div>
       </div>
       <!-- ./image popup -->
-    </div>
-    <!-- popup confirmation -->
-    <div class="popup popup_confirmation popup_zoom">
-      <div class="popup__container">
-        <h2 class="popup__confirmation-title">Вы уверены?</h2>
-        <form name="confirmation" class="popup__form">
-          <button type="submit" class="popup__save-btn popup_save-btn_confirm">
-            Да
-          </button>
-        </form>
-        <button type="button" class="popup__close-btn"></button>
-      </div>
-    </div>
-    <!-- ./popup confirmation -->
-    <div class="popup popup_change-avatar">
-      <div class="popup__container">
-        <h2 class="popup__title">Обновить аватар</h2>
-        <form
-          name="changeAvatar"
-          class="popup__form"
-          name="changeAvatar"
-          novalidate
-        >
-          <label class="popup__field">
-            <input
-              class="popup__input popup__input_type_link"
-              placeholder="Ссылка на картинку"
-              type="url"
-              name="avatar"
-              minlength="2"
-              required
-            />
-            <span class="popup__error" id="avatar-error"></span>
-          </label>
-          <button
-            type="submit"
-            class="popup__save-btn popup__save-btn_disabled"
-            disabled
-          >
-            Сохранить
-          </button>
-        </form>
-        <button type="button" class="popup__close-btn"></button>
-      </div>
-    </div>
-    <!-- /.popup_change-avatar -->
-    <div class="popup popup_opened popup_loader popup_zoom"></div>
-    <template class="place-template">
-      <article class="place">
-        <button class="place__image-btn" name="image-btn" type="button">
-          <img src="#" alt="#" class="place__image" />
-        </button>
-        <div class="place__description">
-          <h2 class="place__name"></h2>
-          <div class="place__like-container">
+      <!-- popup confirmation -->
+      <div class="popup popup_confirmation popup_zoom">
+        <div class="popup__container">
+          <h2 class="popup__confirmation-title">Вы уверены?</h2>
+          <form name="confirmation" class="popup__form">
             <button
-              type="button"
-              name="like-btn"
-              class="place__like-btn"
-            ></button>
-            <span class="place__like-count">0</span>
-          </div>
+              type="submit"
+              class="popup__save-btn popup_save-btn_confirm"
+            >
+              Да
+            </button>
+          </form>
+          <button type="button" class="popup__close-btn"></button>
         </div>
-        <button
-          type="button"
-          name="trash-btn"
-          class="place__trash-btn"
-        ></button>
-      </article>
-    </template>
+      </div>
+      <!-- ./popup confirmation -->
+      <div class="popup popup_change-avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form
+            name="changeAvatar"
+            class="popup__form"
+            name="changeAvatar"
+            novalidate
+          >
+            <label class="popup__field">
+              <input
+                class="popup__input popup__input_type_link"
+                placeholder="Ссылка на картинку"
+                type="url"
+                name="avatar"
+                minlength="2"
+                required
+              />
+              <span class="popup__error" id="avatar-error"></span>
+            </label>
+            <button
+              type="submit"
+              class="popup__save-btn popup__save-btn_disabled"
+              disabled
+            >
+              Сохранить
+            </button>
+          </form>
+          <button type="button" class="popup__close-btn"></button>
+        </div>
+      </div>
+      <!-- /.popup_change-avatar -->
+      <div class="popup popup_opened popup_loader popup_zoom"></div>
+      <template class="place-template">
+        <article class="place">
+          <button class="place__image-btn" name="image-btn" type="button">
+            <img src="#" alt="#" class="place__image" />
+          </button>
+          <div class="place__description">
+            <h2 class="place__name"></h2>
+            <div class="place__like-container">
+              <button
+                type="button"
+                name="like-btn"
+                class="place__like-btn"
+              ></button>
+              <span class="place__like-count">0</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            name="trash-btn"
+            class="place__trash-btn"
+          ></button>
+        </article>
+      </template>
+    </div>
   </body>
 </html>

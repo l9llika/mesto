@@ -95,11 +95,35 @@ export default class FormValidator {
       this._setErrorInputInvalid(input);
     }
   }
-  enableValidation() {
-    this._formType.addEventListener("input", (evt) =>
-      this._handleFormInput(evt)
-    );
+  // enableValidation() {
+  //   this._formType.addEventListener("input", (evt) =>
+  //     this._handleFormInput(evt)
+  //   );
+  // }
+
+  _checkInputValidity(input) {
+    if (input.validity.valid) {
+      this._hideFieldError(input);
+    } else {
+      this._showFieldError(input);
+    }
   }
+  enableValidation() {
+    this._setSubmitButtonFormState();
+
+    this._inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input);
+        this._setSubmitButtonFormState();
+      })
+    })
+  }
+
+
+
+
+
+
   clearFormErrors() {
     this._setSubmitButtonStateNotValid();
     this._inputs.forEach((input) => {

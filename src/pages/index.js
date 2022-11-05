@@ -175,18 +175,17 @@ const popupProfile = new PopupWithForm({
     .catch((error) => console.log(error)),
 });
 
-console.log(popupProfile)
 
 
 const popupWithFormCards = new PopupWithForm({
   popupSelector: profileSelectors.popupAddPlace,
   handleSubmit: ({
-    place,
+    name,
     link
   }) => {
     api
       .addNewCard({
-        place,
+        name,
         link
       })
       .then((res) => {
@@ -200,9 +199,6 @@ const popupWithFormCards = new PopupWithForm({
       .catch((error) => console.log(error));
   },
 });
-
-
-
 
 
 
@@ -233,7 +229,6 @@ const handleCardFormSubmit = (formAllSelectors) => {
 
 
 const popupImage = new PopupWithImage(profileSelectors.imagePopup);
-console.log(popupImage);
 
 popupImage.setEventListeners();
 popupProfile.setEventListeners();
@@ -277,7 +272,6 @@ openButtonChangeAvatar.addEventListener("click", () => {
   formAvatarCheckValid.clearFormErrors();
   popupAvatar.open();
 });
-
 
 
 formAvatarCheckValid.enableValidation();
