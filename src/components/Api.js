@@ -46,14 +46,14 @@ class Api {
   }
 
   addNewCard({
-    name,
+    namePlace,
     link
   }) {
     return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
+        name: namePlace,
         link,
       }),
     }).then((res) => this.handelResponse(res));

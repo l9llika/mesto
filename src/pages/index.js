@@ -180,12 +180,12 @@ const popupProfile = new PopupWithForm({
 const popupWithFormCards = new PopupWithForm({
   popupSelector: profileSelectors.popupAddPlace,
   handleSubmit: ({
-    name,
+    namePlace,
     link
   }) => {
     api
       .addNewCard({
-        name,
+        namePlace,
         link
       })
       .then((res) => {
