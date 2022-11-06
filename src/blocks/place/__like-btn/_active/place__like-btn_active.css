@@ -1,3 +1,6 @@
 .place__like-btn_active {
   background-image: url('../../../../images/like-active.svg');
 }
+.gallery__like-button-loading {
+  background-image: url(../../../../images/loader.svg);
+}

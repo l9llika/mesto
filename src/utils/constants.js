@@ -47,8 +47,8 @@ export const formAllSelectors = {
   form: '.popup__form',
   input: '.popup__input',
   button: '.popup__save-btn',
-  buttonDisabled: '.popup__save-btn_disabled',
-  inputError: '.popup__input_type_error',
+  buttonDisabled: 'popup__save-btn_disabled',
+  inputError: 'popup__input_type_error',
   span: '.popup__error',
   template: '.place-template'
 };
@@ -57,60 +57,3 @@ export const ESCAPE_KEY = 'Escape';
 
 export const USER_TOKEN = "39a4caee-006a-46b7-a27f-18f6a879f957";
 export const BASE_URL = "https://mesto.nomoreparties.co/v1/cohort-52";
-
-
-
-
-
-
-// import monblancImage from '../images/monblanc.jpg';
-// import alicanteImage from '../images/alicante.jpg';
-// import aipetriImage from '../images/aipetri.jpg';
-// import berhofenImage from '../images/berhofen.jpg';
-// import goynukImage from '../images/goynuk.jpg';
-// import altayImage from '../images/altay.jpg';
-
-// export const initialPlaces = [{
-//     name: 'Монблан',
-//     link: monblancImage
-//   },
-//   {
-//     name: 'Аликанте',
-//     link: alicanteImage
-//   },
-//   {
-//     name: 'Ай-Петри',
-//     link: aipetriImage
-//   },
-//   {
-//     name: 'Берхофен замок в Швейцарии',
-//     link: berhofenImage
-//   },
-//   {
-//     name: 'Анталья',
-//     link: goynukImage
-//   },
-//   {
-//     name: 'Алтай Катунь',
-//     link: altayImage
-//   },
-//   {
-//     name: 'Архыз',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-//   }, {
-//     name: 'Челябинская область',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-//   }, {
-//     name: 'Иваново',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-//   }, {
-//     name: 'Камчатка',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-//   }, {
-//     name: 'Холмогорский район',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-//   }, {
-//     name: 'Байкал',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-//   }
-// ];

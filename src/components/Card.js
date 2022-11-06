@@ -79,10 +79,10 @@ export default class Card {
     }) {
         if (isLoading) {
             this._likeButton.disabled = true;
-            this._likeButton.classList.add("place__like-btn-loading");
+            // this._likeButton.classList.add("place__like-btn_loading");
         } else {
             this._likeButton.disabled = false;
-            this._likeButton.classList.remove("place__like-btn-loading");
+            // this._likeButton.classList.remove("place__like-btn_loading");
         }
     }
     //** Меняем значения лайка карточки */

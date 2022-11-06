@@ -241,20 +241,6 @@ const formProfileCheckValid = new FormValidator(formAllSelectors, profilePopup);
 const formPlaceCheckValid = new FormValidator(formAllSelectors, popupPlace);
 const formAvatarCheckValid = new FormValidator(formAllSelectors, popupAvatarElement);
 
-// //**  */
-// function handleEditProfileButtonClick() {
-//   popupEdit.open();
-//   const userInfoObj = userInfo.getUserInfo();
-//   nameInput.value = userInfoObj.name;
-//   jobInput.value = userInfoObj.job;
-//   formEditValidator.resetValidation();
-// }
-
-// function handleAddCardButtonClick() {
-//   popupAdd.open();
-//   formAddValidator.resetValidation();
-// }
-// this._formType.checkValidity is not a function
 
 //** EVENT LISTENERS */
 popupProfileOpenButton.addEventListener("click", () => {
