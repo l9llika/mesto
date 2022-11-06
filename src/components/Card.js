@@ -37,8 +37,8 @@ export default class Card {
         this._deleteButton = this._element.querySelector(".place__trash-btn");
 
         this._image = this._element.querySelector(".place__image");
-        this._image.src = this._link;
         this._image.alt = this._name;
+        this._image.src = this._link;
 
         this._currentUserId = localStorage.getItem("userId");
 
@@ -89,8 +89,8 @@ export default class Card {
     setLikesValue({
         likes
     }) {
-        this._isLiked = this.isLikedByUser(likes);
         this._likes = likes;
+        this._isLiked = this.isLikedByUser(likes);
         if (this._isLiked) {
             this._likeButton.classList.add("place__like-btn_active");
         } else {
@@ -100,8 +100,8 @@ export default class Card {
     }
 
     //** check likes by user */
-    isLikedByUser() {
-        return this._likes.some((ownLike) => ownLike._id === this._currentUserId);
+    isLikedByUser(_ownerId) {
+        return this._likes.some((ownerId) => ownerId._id === this._currentUserId);
     }
     //**  */
     _isOwner() {
@@ -110,16 +110,20 @@ export default class Card {
 
     //** Слушатели событий  */
     _setEventListeners() {
-        this._likeButton.addEventListener('click', (evt) => {
+        this._likeButton.addEventListener("click", (evt) => {
             this._handleCardLike(evt);
         });
+
 
         this._deleteButton.addEventListener('click', () => {
             this._handleDeleteCard();
         });
 
-        this._image.addEventListener('click', () => {
-            this._handleImageClick();
+        this._image.addEventListener("click", () => {
+            this._handleCardClick({
+                name: this._name,
+                link: this._link
+            });
         });
     }
 }

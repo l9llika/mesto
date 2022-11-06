@@ -80,7 +80,6 @@ const createCard = (cardData) => {
 
   return cardElement;
 };
-
 // console.log(card);
 const handleLike = (_, id, card) => {
   const isCardLiked = card.isLikedByUser();
@@ -101,7 +100,6 @@ const handleLike = (_, id, card) => {
 
 
 
-
 const userInfo = new UserInfo({
   name: profileSelectors.name,
   job: profileSelectors.job,
@@ -113,7 +111,7 @@ Promise.all([api.getUserInformation(), api.getInitialCards()])
     popupLoader.close();
     userInfo.setUserInfo({
       name: userData.name,
-      job: userData.job,
+      job: userData.about,
       avatar: userData.avatar,
     });
     localStorage.setItem("userId", userData._id);
@@ -165,8 +163,9 @@ const popupProfile = new PopupWithForm({
       userInfo.setUserInfo({
         name: res.name,
         job: res.about,
-        avatar: res.avatar,
+        avatar: res.avatar
       });
+      // console.log(name, jobInput, );
       popupProfile.handleSubmitButton({
         isLoading: false
       });
@@ -212,17 +211,6 @@ const popupWithFormCards = new PopupWithForm({
 
 
 
-
-//** SUBMITS FOR PROFILE AND NEW CARD  */
-const handleProfileFormSubmit = (profileSelectors) => {
-  userInfo.setUserInfo(profileSelectors);
-  popupEdit.close();
-}
-
-const handleCardFormSubmit = (formAllSelectors) => {
-  cardSection.addItem(createCard(formAllSelectors));
-  popupAdd.close();
-};
 
 //** NEW CLASS CREATIONS */
 // popups
