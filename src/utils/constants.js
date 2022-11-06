@@ -53,7 +53,6 @@ export const formAllSelectors = {
   template: '.place-template'
 };
 
-export const ESCAPE_KEY = 'Escape';
 
 export const USER_TOKEN = "39a4caee-006a-46b7-a27f-18f6a879f957";
 export const BASE_URL = "https://mesto.nomoreparties.co/v1/cohort-52";
